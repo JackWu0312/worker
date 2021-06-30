@@ -1,0 +1,176 @@
+<view class="contractdetail">
+
+  <head headTxet="合同详情"></head>
+
+  <view class="list">
+    <view class="item">
+      <image
+        src="{{item.chengjiaoType.key=='新签'?'../../static/newsign.png':item.chengjiaoType.key=='续签'?'../../static/renewal.png':''}}">
+      </image>
+      <view class="itemtit">
+        {{item.house.quyuCName}}{{item.house.louNo}}号楼{{item.house.men}}单元{{item.house.fangNo}}室{{item.house.fangjianName=='整租'?'整租':item.house.fangjianName}}{{item.house.fangjianName=='整租'?'':'间'}}
+      </view>
+      <view class="info">
+        <view
+          style="background-color:{{item.contractAuditStatus==2?'#31C27C':(item.contractAuditStatus==0||item.contractAuditStatus==1)?'#3399CC':item.contractAuditStatus==3?'#ff3a34':''}}">
+          {{item.contractAuditStatus==2?'已审核':(item.contractAuditStatus==0||item.contractAuditStatus==1)?'待审核':item.contractAuditStatus==3?'已驳回':''}}
+        </view>
+
+        <view>{{item.zukeName}} {{item.zukePhone}}</view>
+        <view>
+          {{(item.status==0||item.status==17)?'租期中':(item.status==1||item.status==16)?'已退租':item.status==13?'已违约':item.status==21?'已作废':item.status==20?item.signingStatus==1?'未签字':'已签字':''}}
+        </view>
+      </view>
+      <view class="text">{{item.startTime}} - {{item.endTime}}</view>
+      <view class="text">
+        <text>{{item.jiage}}元/月</text><text>{{item.zhifuType.key}}</text><text>{{item.isElectron==2?'纸质合同':'电子合同'}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="tab">
+    <view class="tabbar {{active==1?'avtive':''}}" bindtap="select" data-index="1">
+      <view>租客</view>
+      <view></view>
+    </view>
+    <view class="tabbar {{active==2?'avtive':''}}" bindtap="select" data-index="2">
+      <view>合同</view>
+      <view></view>
+    </view>
+    <!-- <view class="tabbar {{active==3?'avtive':''}}" bindtap="select" data-index="3">
+      <view>物业</view>
+      <view></view>
+    </view> -->
+    <view class="tabbar {{active==4?'avtive':''}}" bindtap="select" data-index="4">
+      <view>收支</view>
+      <view></view>
+    </view>
+    <view class="tabbar {{active==5?'avtive':''}}" wx:if="{{item.tzxyTempId}}" bindtap="select" data-index="5">
+      <view>停租信息</view>
+      <view></view>
+    </view>
+  </view>
+
+  <view class="box">
+    <view class="zukeinfo" wx:if="{{active==1}}">
+      <view class="name">
+        <image src="../../static/contact.png"></image>
+        <view>{{item.houseUser.nickname}} {{item.houseUser.gender==1?'男':'女'}}</view>
+      </view>
+      <view class="text">手机号码：{{item.houseUser.phone}} </view>
+      <view class="text">
+        {{item.houseUser.certificateType==1?'身份证':item.houseUser.certificateType==2?'护照':item.houseUser.certificateType==3?'港澳通行证':'台湾同胞证'}}：{{item.houseUser.sfzNo}}
+      </view>
+      <view class="text">职业：{{item.houseUser.job?item.houseUser.job:'暂无'}} </view>
+      <view class="text">收款人姓名：{{item.houseUser.cardName?item.houseUser.cardName:'暂无'}}</view>
+      <view class="text">银行卡号：{{item.houseUser.cardNo?item.houseUser.cardNo:'暂无'}}</view>
+      <view class="text">所属银行：{{item.houseUser.cardType?item.houseUser.cardType:'暂无'}}</view>
+      <view class="text">所属支行：{{item.houseUser.cardTypeZhihang?item.houseUser.cardTypeZhihang:'暂无'}}</view>
+      <view class="text">紧急联系人：{{item.houseUser.emergencyPeo?item.houseUser.emergencyPeo:'暂无'}}</view>
+      <view class="text">紧急联系人电话：{{item.houseUser.emergencyPeoPhone?item.houseUser.emergencyPeoPhone:'暂无'}}</view>
+
+      <view class="title" wx:if="{{item.heZuRenList.length>0}}">合租人</view>
+      <view class="subscriber" wx:for="{{item.heZuRenList}}" wx:for-item='value' wx:key="id">
+        <image src="../../static/people.pic"></image>
+        <view>
+          <view>
+            <view>{{value.nickname}} {{value.gender==1?'男':'女'}} {{value.phone}}</view>
+            <view> 身份证:{{value.sfzNo}}</view>
+          </view>
+          <image src="../../static/phone.png" bindtap="call" data-phone="{{value.phone}}"></image>
+        </view>
+      </view>
+  </view>
+
+
+    <view class="contract" wx:if="{{active==2}}">
+      <view class="name">
+        <image src="../../static/contractnew.png"></image>
+        <view>电子合同：{{item.startTime}} - {{item.endTime}}</view>
+      </view>
+      <view class="text">合同编号：{{item.no}} </view>
+      <view class="part">
+        <view class="text">成交方式：{{item.chengjiaoType.key}}</view>
+        <view class="text">租金：{{item.jiage}}元/月</view>
+      </view>
+      <view class="part">
+        <view class="text">付款方式：{{item.zhifuType.key}}</view>
+        <view class="text">押金：{{item.yaJin}}元</view>
+      </view>
+      <view class="text">收租方式：提前付款天数 {{item.tiqianDays}}天</view>
+      <view class="text">签约时间：{{item.time}}</view>
+      <!-- <view class="text">合同模板：</view> -->
+      <view class="text">所属部门：{{item.chengjiaorenBumenId.name}}</view>
+      <view class="text">
+        <text wx:for="{{item.fzrList}}" wx:for-item='fzr'
+          wx:key="id">{{fzr.type==0?'签约人':fzr.type==1?'文秘':fzr.type==2?'呼叫中心':'管家'}}：{{fzr.user.nickName}}</text>
+      </view>
+
+      <view class="button">
+        <van-button type="primary" bind:click="look">查看</van-button>
+        <van-button type="primary" wx:if="{{item.isElectron==='1'}}" disabled="{{islook}}" bind:click="lookhetong">
+          查看电子合同</van-button>
+        <van-button type="primary" wx:if="{{item.isElectron==='1'}}" disabled="{{isSign}}" bind:click="sign">进行电子签约
+        </van-button>
+      </view>
+
+
+    </view>
+
+    <!-- <view  class="contract" wx:if="{{active==3}}">
+      <view class="part">
+        <view class="text">水表：{{property.}}</view>
+        <view class="text">电表：{{property.jiage}}元/月</view>
+      </view>
+      <view class="part">
+        <view class="text">燃气表：{{property.chengjiaoType.key}}</view>
+        <view class="text">中水表：{{property.jiage}}元/月</view>
+      </view>
+      <view class="text" >热水表：{{property.no}} </view>property  
+
+
+
+    </view> -->
+
+    <view class="listinfo" wx:if="{{active==4}}">
+      <view class="listItem" wx:for="{{list}}" wx:for-item='value' wx:key="id">
+        <image src="../../static/money.png"></image>
+        <view class="iteminfo">
+          <view>
+            <view style="background-color:{{value.type==1?'#33aaf5':value.type==2?'#FF0000':''}}">
+              {{value.type==1?'收入':value.type==2?'支出':''}} </view>
+            <view> {{value.typeId.key}}：{{value.money}}元</view>
+          </view>
+          <view>费用周期：{{value.beginTime}} - {{value.endTime}}</view>
+          <view>描述：{{value.desc}}</view>
+        </view>
+        <image></image>
+        <image
+          src="{{(value.type==1&&value.indentType==1)?'../../static/uncollected.png':(value.type==1&&value.indentType!=1)?'../../static/received.png':(value.type==2&&value.indentType==1)?'../../static/unfunded.png':(value.type==2&&value.indentType!=1)?'../../static/paid.png':''}} ">
+        </image>
+      </view>
+    </view>
+
+    <view class="tzinfo" wx:if="{{active==5}}">
+      <view class="text">小区名称：{{item.house.quyuCName}}</view>
+      <view class="text">
+        楼栋信息：{{item.house.louNo}}号楼{{item.house.men}}单元{{item.house.fangNo}}室-{{item.house.fangjianName}}</view>
+      <view class="text">楼层面积：第{{item.house.loucengA}}层/共{{item.house.loucengB}}层{{item.house.mianji}}m²</view>
+      <view class="text">合同编号：{{item.no}}</view>
+      <view class="text">结账截止日：{{item.tuiOrWeiDate}}</view>
+      <view class="text">解除合同日期：{{tuizudate}}</view>
+      <view class="text">应补（退）款：{{item.settleAmount}} </view>
+      <view class="button">
+        <van-button type="primary" bind:click="lookxieyi">查看</van-button>
+        <van-button type="primary" wx:if="{{item.compactType==1&&item.tzxySignStatus===1}}" bind:click="yulanxieyi">
+          查看电子协议</van-button>
+        <van-button type="primary"
+          wx:if="{{item.compactType==1&&item.contributionStatus===1&& item.contractAuditStatus == 2 && item.tzxyTempId}}"
+          bind:click="signxieyi">进行电子签约
+        </van-button>
+      </view>
+    </view>
+  </view>
+
+
+</view>

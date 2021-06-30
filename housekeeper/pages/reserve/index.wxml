@@ -1,0 +1,98 @@
+<view>
+
+  <head headTxet="预定"></head>
+  <view class="box">
+    <view class="adress">
+      <image src="../../static/adressyu.png"></image>{{address}}
+    </view>
+    <view class="tit">
+      预定人
+    </view>
+    <view>
+      <view class="item">
+        <view><text>租客姓名</text><text>*</text></view>
+        <view><input type="text" placeholder="请填写" bindinput='bindName' value="{{ zukeName }}"
+            placeholder-class="place" /></view>
+      </view>
+      <view class="item">
+        <view><text>手机号码</text><text>*</text></view>
+        <view><input type="tel" placeholder="请填写" bindinput='bindPhone' value="{{ zukePhone }}"
+            placeholder-class="place" /></view>
+      </view>
+      <view class="item">
+        <view><text>证件类型</text><text>*</text></view>
+        <view class="muban" bindtap="onClose">
+          <view class="date">{{type}}</view>
+          <image src="../../static/right.png"></image>
+        </view>
+      </view>
+      <view class="item">
+        <view><text>{{type}}</text><text>*</text></view>
+        <view><input type="text" placeholder="请填写" bindinput='bindSfz' value="{{ zukeSfz }}" placeholder-class="place" />
+        </view>
+      </view>
+    </view>
+    <view class="tit">
+      预定信息
+    </view>
+    <view>
+      <view class="item">
+        <view><text>收入类型</text><text>*</text></view>
+        <view class="select">
+          <view class="{{indentType==1?'active':''}}" bindtap="rax" data-rax="1">预收</view>
+          <view class="{{indentType==2?'active':''}}" bindtap="rax" data-rax="2">实收</view>
+        </view>
+      </view>
+      <view class="item">
+        <view><text>定金</text><text>*</text></view>
+        <view><input type="number" placeholder="请填写" bindinput='bindMoney' value="{{ money }}"  placeholder-class="place" /><text>元</text></view>
+      </view>
+      <view class="item">
+        <view><text>定金失效时间</text><text>*</text></view>
+        <view class="muban" bindtap="onDisplay" data-time="1">
+          <view class="{{acceptDate?'date':''}}">{{acceptDate?acceptDate:'请选择'}}</view>
+          <image src="../../static/right.png"></image>
+        </view>
+      </view>
+      <view class="item">
+        <view><text>预计签约时间</text><text>*</text></view>
+        <view class="muban" bindtap="onDisplay" data-time="2">
+          <view class="{{endtime?'date':''}}">{{endtime?endtime:'请选择'}}</view>
+          <image src="../../static/right.png"></image>
+        </view>
+      </view>
+
+      <view class="items">
+        <view><text>描述</text></view>
+        <textarea placeholder="请输入描述" type="text" bindinput='bindRemark' value="{{ remark }}"   placeholder-class="place"></textarea>
+      </view>
+      <view class="items">
+        <view style="margin-bottom:10rpx"><text>凭证</text></view>
+        <van-uploader file-list="{{ fileList }}" bind:delete="deleteImg" bind:after-read="afterRead" />
+      </view>
+    </view>
+    <view class="tit">
+      房源收定人
+      <view class="addpeo" bindtap="modify" data-type="0">添加收定人</view>
+    </view>
+    <view class="people" bindtap="modify" wx:for-index="index" data-type="1" data-index="{{index}}" data-item="{{item}}"
+      wx:for="{{list}}" wx:for-item='item' wx:key="id" data-id="{{item.userid}}">
+      <image src="../../static/people.pic"></image>
+      <view>{{item.t_fzr_position}}：{{item.t_fzr_name}}</view>
+      <image src="../../static/right.png"></image>
+    </view>
+    <view class="btn" bindtap="sure">
+      <view>保存</view>
+    </view>
+  </view>
+</view>
+
+<van-popup show="{{ show }}" position="bottom" custom-style="height: 500rpx;" bind:close="onClose">
+  <view class="pickers">
+    <van-picker show-toolbar confirm-button-text="确定" cancel-button-text="取消" bind:cancel="onClose"
+      bind:change="onChange" bind:confirm="onConfirm" columns="{{ columns }}" />
+  </view>
+</van-popup>
+
+<van-calendar show="{{ showdate }}" bind:close="onClosedate" min-date="{{ minDate }}" max-date="{{ maxDate }}"
+  bind:confirm="onConfirmdate" default-date="{{defaultDate}}" />

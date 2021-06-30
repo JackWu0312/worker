@@ -1,0 +1,104 @@
+.info {
+  width: 750rpx;
+  height: 487rpx;
+  position: relative;
+}
+
+.infobg {
+  width: 750rpx;
+  height: 269rpx;
+  background: linear-gradient(270deg, #3BCC8A 0%, #5BDD66 100%);
+}
+
+.infoBox {
+  width: 658rpx;
+  height: 379rpx;
+  background: #FFFFFF;
+  box-shadow: 0rpx 2rpx 14rpx 0rpx #B1F5C7;
+  border-radius: 10rpx;
+  position: absolute;
+  left: 46rpx;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.infoBox>view:nth-child(1) {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 120rpx;
+  /* border: 12rpx solid #42CF85; */
+  overflow: hidden;
+  text-align: center;
+  line-height: 120rpx; 
+  margin-top: 19rpx;  
+  /* box-sizing: border-box; */ 
+}
+
+.infoBox>view:nth-child(1) image { 
+  width: 120rpx; 
+  height: 120rpx;
+  /* margin-top: 6rpx; */
+}
+
+.infoBox>view:nth-child(2) {
+  font-size: 36rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #000000;
+  margin-top: 18rpx;
+}
+
+.infoBox>view:nth-child(3) {
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  margin-top: 22rpx;
+  color: #A9A9A9;
+}
+.infoBox>view:nth-child(4) {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 45rpx;
+}
+.infoBox>view:nth-child(4) >view{
+  display: flex;
+  align-items: center;
+}
+.infoBox>view:nth-child(4)>view>image{
+  margin-right: 14rpx;
+}
+.infoBox>view:nth-child(4)>view>view{
+  font-size: 24rpx;
+font-family: PingFangSC-Regular, PingFang SC;
+font-weight: 400;
+color: #7A7A7A;
+}
+.infoBarBox{
+  width: 750rpx;
+  padding: 0 77rpx;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 52rpx;
+  margin-bottom: 12rpx;
+}
+.infoBar{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.infoBar image{
+  width: 72rpx;
+  height: 72rpx;
+}
+.infoBar view{
+  font-size: 24rpx;
+  margin-top: 26rpx;
+font-family: PingFangSC-Regular, PingFang SC;
+font-weight: 400;
+color: #7A7A7A;
+}

@@ -1,0 +1,96 @@
+<view class="focus">
+  <view class="cardbg">
+    <swiper autoplay="{{autoplay}}" interval="{{interval}}" circular="true" duration="{{duration}}">
+      <block wx:for="{{imgUrl}}" wx:key="id" wx:for-item='item' wx:for-index="index">
+        <swiper-item>
+          <image class="bannerimg" src="{{item.big}}" />
+        </swiper-item>
+      </block>
+    </swiper>
+    <image class="backBox" bindtap="back" src="../../static/back.png" />
+    <!-- <image class="updown" src="../../static/updown.png"></image> -->
+    <!-- <view class="tips" wx:if="{{imgUrl.length==0}}">图片正在加急上传</view> -->
+    <view class="roomInfo">
+      <view>{{value.status==20?value.zujin:value.status==40?value.chengzu.jiage:value.status==30?value.houseShouding.money:(value.status==10||value.status==11)?value.houseDecoration.sumPredictMoney:(value.status==50||value.status==51)?value.zujin:value.status==60?value.zujin:value.zujin}}</view>
+      <view>元/月</view>
+    </view>
+    <view class="label">
+      <!-- <view wx:if="{{value.isDaili==1}}">{{value.isDaili==1?'脏房':''}}</view> -->
+      <!-- <view wx:if="{{value.isTurnRent==1}}">{{value.isTurnRent==1?'转租':''}}</view>
+      <view wx:if="{{value.isBack==1}}">{{value.isBack==1?'申退':''}}</view> -->
+    </view>
+  </view> 
+  <view class="room">
+    <view>{{value.quyuCName}}</view>
+    <view >房源编号：{{value.taizhang}}</view>
+    <!-- <view>待租121天</view> -->
+    <!-- <image src="../../static/vacant.png"></image> -->
+  </view>
+  <view class="adress">
+    <image src="../../static/adressRoom.png"></image>
+    <view>{{value.quyuAName}} {{value.quyuBName}}</view>
+    <!-- <image src="../../static/right.png"></image> -->
+  </view>
+
+  <view class="box">
+      <view><text>户型</text> <text>{{value.shi}}室{{value.ting}}厅{{value.wei}}卫</text></view>
+      <view><text>厅室</text> <text> {{value.huxing.key==''?'暂无':value.huxing.key - value.fangjianName}} </text></view>
+      <view><text>单元</text> <text>{{value.louNo}}座栋{{value.men}}单元{{value.fangNo}}室</text></view>
+      <view><text>面积</text> <text>{{value.mianji}}平米</text></view>
+      <view><text>朝向</text> <text>向{{value.chaoxiang.key}}</text></view>
+      <view><text>楼层</text> <text>{{value.loucengA}}/{{value.loucengB}}层</text></view>
+      <!-- <view><text>可租</text> <text>{{value.loucengA}}/{{value.loucengB}}层</text></view> -->
+  </view>
+  <view class="title">房源</view>
+  <view class="remarks">{{value.desc}}</view>
+  <view class="title">备注</view>
+  <view class="remarks">{{value.remark}}</view>
+  <view class="title" wx:if="{{value.status==30}}">预订人</view>
+  <view class="title" wx:if="{{value.status==40}}">成租人</view>
+  <view class="subscriber" wx:if="{{value.status==30||value.status==40}}">
+    <image src="../../static/people.pic"></image>
+    <view>
+        <view>
+          <view>{{value.houseShouding.zukeName}}</view>
+          <view>{{value.houseShouding.zukePhone}}</view>
+        </view>
+        <image src="../../static/phone.png" bindtap="call" data-phone="{{value.houseShouding.zukePhone}}"></image>
+    </view>
+  </view>
+  <view class="bottomBar" catchtap=';'>
+    <view class="botmItem" bindtap="reserve"  wx:if="{{value.status==20||value.status==10||value.status==11||(value.status==40&&value.houseStatus==1&&value.shoudingStatus!=1)}}">
+      <image src="../../static/reserve.png"></image>
+      <view>预定</view>
+    </view>
+    <view class="botmItem"  bindtap="sign" d wx:if="{{value.status==20||value.status==30||value.status==10||value.status==11||(value.status==40&&value.houseStatus==1&&value.shoudingStatus==1)}}">
+      <image src="../../static/contract.png"></image>
+      <view>签约</view>
+    </view>
+    <view class="botmItem" wx:if="{{value.status==40}}">
+      <image src="../../static/contract.png"></image>
+      <view>续签</view>
+    </view>
+    <view class="botmItem" bindtap="refund" wx:if="{{value.status==40}}">
+      <image src="../../static/contract.png"></image>
+      <view>退租</view>
+    </view>
+    <view class="botmItem"  bindtap="unsubscribe" wx:if="{{value.status==30||(value.status==40&&value.houseStatus==1&&value.shoudingStatus==1)}}">
+      <image src="../../static/contract.png"></image>
+      <view>退定</view>
+    </view>
+    <view class="botmItem" wx:if="{{value.status==10||value.status==11}}">
+      <image src="../../static/contract.png"></image>
+      <view>装修</view>
+    </view>
+    <view class="botmItem" bindtap="contract">
+      <image src="../../static/agreement.png"></image>
+      <view>合同</view>
+    </view>
+    <!-- <view class="botmItem" wx:if="{{value.status==20}}">
+      <image src="../../static/contracts.png"></image>
+      <view>企业签约</view>
+    </view> -->
+   
+
+  </view>
+</view>

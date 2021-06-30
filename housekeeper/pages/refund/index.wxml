@@ -1,0 +1,122 @@
+<view class="refund">
+
+  <head headTxet="退租"></head>
+  <view class="info">
+    <image src="../../static/people.pic"></image>
+    <view>
+      <view>租金{{val.jiage}}元/月 押金{{val.yaJin}}元</view>
+      <view>{{val.startTime}} - {{val.endTime}}</view>
+    </view>
+  </view>
+  <view class="adress"><text>地址：</text>{{adress}}</view>
+  <view class="together">
+    <view>退租信息</view>
+    <view></view>
+  </view>
+  <view class="item">
+    <view><text>退租类型</text><text>*</text></view>
+    <view class="sex">
+      <view class="{{tuiZuType==0?'active':''}}">正常退</view>
+      <view class="{{tuiZuType==1?'active':''}}">非正常退</view>
+    </view>
+  </view>
+  <view class="item">
+    <view><text>预计离房日期</text><text>*</text></view>
+    <view class="muban" bindtap="onDisplay">
+      <view style="color:#000">{{defaultDateFormat}}</view>
+      <image src="../../static/right.png"></image>
+    </view>
+  </view>
+  <view class="item" wx:if="{{tuiZuType==1}}">
+    <view><text>原因</text><text>*</text></view>
+    <view class="muban" bindtap="onClose">
+      <view style="color:{{type?'#000':''}}">{{type?type:'请选择'}}</view>
+      <image src="../../static/right.png"></image>
+    </view>
+  </view>
+  <view class="item" wx:if="{{tuiZuType==1}}">
+    <view><text>请选择退租协议模板</text><text>*</text></view>
+    <view class="muban" bindtap="onClosemuban">
+      <view style="color:{{typemuban?'#000':''}}">{{typemuban?typemuban:'请选择'}}</view>
+      <image src="../../static/right.png"></image>
+    </view>
+  </view>
+  
+  <view class="together">
+    <view>退租详情</view>
+    <view bindtap="revenue">添加退款项</view>
+  </view>
+  <view class="list">
+    <view class="listItem" wx:for="{{list}}" wx:for-item='item' wx:key="moneyTypeId" bindtap="revenue"
+      wx:for-index="index" data-item="{{item}}" data-index="{{index}}">
+      <image src="../../static/money.png"></image>
+      <view class="iteminfo">
+        <view>
+          <view style="padding:0 5rpx;margin-right: 20rpx;background-color:{{item.shouZhiType==1?'#33aaf5':'red'}}">
+            {{item.shouZhiType==1?'收入':'支出'}}</view>
+          <view>{{item.key}}：{{item.money}}元</view>
+        </view>
+        <view>费用周期：{{item.beginTime}} - {{item.endTime}}</view>
+        <view>描述：{{item.desc}}</view>
+      </view>
+      <image src="../../static/right.png"></image>
+    </view>
+  </view>
+  <view class="together">
+    <view>费用明细</view>
+    <view bindtap="showAll">{{isshow?'收起':'展开'}}</view>
+  </view>
+
+
+  <view class="list" wx:if="{{isshow}}">
+    <view class="listItem" wx:for="{{costList}}" wx:for-item='item' wx:key="id">
+      <image src="../../static/money.png"></image>
+      <view class="iteminfo">
+        <view>
+          <view></view>
+          <view>{{item.typeId.key}}：{{item.money}}元</view>
+        </view>
+        <view>费用周期：{{item.beginTime}}- {{item.endTime}}</view>
+        <view>描述：{{item.desc}}</view>
+      </view>
+      <image></image>
+      <image
+        src="{{(item.type==1&&item.indentType==1)?'../../static/uncollected.png':(item.type==2&&item.indentType==1?'../../static/unfunded.png':(item.type==1&&item.indentType==2?'../../static/received.png':(item.type==2&&item.indentType==2?'../../static/paid.png':'')))}}">
+      </image>
+    </view>
+  </view>
+
+  <view class="items">
+    <view><text>备注</text></view>
+    <textarea placeholder="请输入描述" bindinput='bindRemark' value="{{ tuiOrWeiRemark  }}"
+      placeholder-class="place"></textarea>
+  </view>
+
+  <!-- <view class="items">
+    <view style="margin-bottom:10rpx"><text>凭证</text></view>
+    <van-uploader file-list="{{ fileList }}" bind:delete="deleteImg" bind:after-read="afterRead" />
+  </view> -->
+
+  <!-- <view class="total">总额：{{total}}元</view> -->
+
+  <view class="btn">
+    <view bindtap="sure">保存</view>
+  </view>
+</view>
+
+<van-calendar show="{{ showdate }}" bind:close="onClosedate" min-date="{{ minDate }}" max-date="{{ maxDate }}"
+  bind:confirm="onConfirmdate" default-date="{{defaultDate}}" />
+
+<van-popup show="{{ show }}" position="bottom" custom-style="height: 500rpx;" bind:close="onClose">
+  <view class="pickers">
+    <van-picker show-toolbar confirm-button-text="确定" cancel-button-text="取消" bind:cancel="onClose"
+      bind:change="onChange" bind:confirm="onConfirm" columns="{{ columns }}" />
+  </view>
+</van-popup>
+
+<van-popup show="{{ showmuban }}" position="bottom" custom-style="height: 500rpx;" bind:close="onClosemuban">
+  <view class="pickers">
+    <van-picker show-toolbar confirm-button-text="确定" cancel-button-text="取消" bind:cancel="onClosemuban"
+      bind:change="onChangemuban" bind:confirm="onConfirmmuban" columns="{{ columnsmuban }}" />
+  </view>
+</van-popup>

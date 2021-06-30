@@ -1,0 +1,24 @@
+<view class="login">
+
+  <image src="../../static/login.png"></image>
+
+  <view class="tips">
+    <view>欢迎您！</view>
+    <view>Welcome to our system…</view>
+  </view>
+
+  <view class="input">
+    <image src="../../static/security.png"   style=" width: 23rpx;height: 28rpx;"></image>
+    <input type="text" placeholder="请输入安全码" disabled="true" value="{{gcid }}" placeholder-class="placeholder"></input>
+  </view>
+  <view class="input">
+    <image src="../../static/admin.png"  style=" width: 23rpx;height: 24rpx;"></image>
+    <input type="text" bindinput='bindName' placeholder="请输入用户名" placeholder-class="placeholder" value="{{accountName }}"></input>
+  </view>
+  <view class="input">
+    <image src="../../static/password.png"  style=" width: 22rpx;height: 29rpx;"></image>
+    <input type="password" placeholder="请输入密码"  bindinput='bindPwd' placeholder-class="placeholder" value="{{accountPwd}}"></input>
+  </view>
+
+  <view class="btn" bindtap="sure">登录</view>
+</view>

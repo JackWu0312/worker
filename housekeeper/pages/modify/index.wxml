@@ -1,0 +1,28 @@
+<view class="modify">
+  <head headTxet="{{index?'修改收定人':'添加收定人'}}"></head>
+  <view class="box">
+    <view class="item">
+      <view><text>负责人</text><text></text></view>
+      <view class="muban" bindtap="onClose">
+        <view class="dete">{{type}}</view>
+        <image src="../../static/right.png"></image>
+      </view>
+    </view>
+    <view class="item">
+      <view><text>业务员</text><text></text></view>
+      <view class="muban" bindtap="selepeople">
+        <view class="{{backInfo.nickName?'dete':''}}">{{backInfo.nickName?backInfo.nickName:'请选择'}}</view>
+        <image src="../../static/right.png"></image>
+      </view>
+    </view>
+  </view>
+
+  <view class="btn" bindtap="sure">保存</view>
+</view>
+
+<van-popup show="{{ show }}" position="bottom" custom-style="height: 500rpx;" bind:close="onClose">
+  <view class="pickers">
+    <van-picker show-toolbar confirm-button-text="确定" cancel-button-text="取消" bind:cancel="onClose"
+      bind:change="onChange" bind:confirm="onConfirm" columns="{{ columns }}" />
+  </view>
+</van-popup>

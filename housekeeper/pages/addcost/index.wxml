@@ -1,0 +1,48 @@
+<view class="together">
+  <head headTxet="{{type?'修改其它费用':'添加其它费用'}}"></head>
+ 
+  <view class="box">
+    <view class="item">
+      <view><text>费用类型</text><text>*</text></view>
+      <view class="muban" bindtap="onClose">
+        <view style="background-color:{{type?'#000':''}}">{{type?type:'请选择'}}</view>
+        <image src="../../static/right.png"></image>
+      </view>
+    </view>
+
+    <view class="item">
+      <view><text>付款方式</text><text>*</text></view>
+      <view class="muban" bindtap="onCloseMode">
+        <view style="background-color:{{typeMode?'#000':''}}">{{typeMode?typeMode:'请选择'}}</view>
+        <image src="../../static/right.png"></image>
+      </view>
+    </view>
+
+    <view class="item">
+      <view><text>金额</text><text>*</text></view>
+      <view><input type="number" placeholder="请填写" bindinput='bindMoney' value="{{ feiYongMoney }}"  placeholder-class="place" /><text>元</text></view>
+    </view>
+    <view class="items">
+      <view><text>备注</text></view>
+      <textarea placeholder="请输入描述"  bindinput='bindRemark' value="{{ feiYongDesc }}" placeholder-class="place"></textarea>
+    </view>
+  </view>
+
+  <view class="btn">
+      <view bindtap="save">保存</view>
+    </view>
+</view>
+
+<van-popup show="{{ show }}" position="bottom" custom-style="height: 500rpx;" bind:close="onClose">
+  <view class="pickers">
+    <van-picker show-toolbar confirm-button-text="确定" cancel-button-text="取消" bind:cancel="onClose"
+      bind:change="onChange" bind:confirm="onConfirm" columns="{{ columns }}" />
+  </view>
+</van-popup>
+
+<van-popup show="{{ showMode }}" position="bottom" custom-style="height: 500rpx;" bind:close="onCloseMode">
+  <view class="pickers">
+    <van-picker show-toolbar confirm-button-text="确定" cancel-button-text="取消" bind:cancel="onCloseMode"
+      bind:change="onChangeMode" bind:confirm="onConfirmMode" columns="{{ columnsMode }}" />
+  </view>
+</van-popup>

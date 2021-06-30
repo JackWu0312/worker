@@ -1,0 +1,529 @@
+<view class="sign">
+  <view class="top">
+    <view class="head">
+      <view class="title">
+        <image bindtap="back" src="../../static/back.png"></image>
+        <view>签约</view>
+      </view>
+
+      <view class="tips">
+        <view class="{{activetip==1?'activetip':''}} tipbox" bindtap="activetipbind" data-index="1">
+          <view>个人信息</view>
+        </view>
+        <view class="{{activetip==2?'activetip':''}} tipbox" bindtap="activetipbind" data-index="2">
+          <view>合同信息</view>
+        </view>
+        <view class="{{activetip==3?'activetip':''}} tipbox" bindtap="activetipbind" data-index="3">
+          <view>物业交割</view>
+        </view>
+        <view class="solid"></view>
+      </view>
+    </view>
+  </view>
+
+  <view class="info" wx:if="{{activetip==1}}">
+    <view class="box">
+      <view class="item">
+        <view><text>房间信息</text><text>*</text></view>
+        <view class="muban">
+          <view style="color:#000">{{address}}</view>
+        </view>
+      </view>
+      <view class="item">
+        <view><text>合同类型</text><text>*</text></view>
+        <view class="select">
+          <view class="{{type==1?'active':''}}" data-contracttype="1" bindtap="contractType">个人合同</view>
+          <view class="{{type==2?'active':''}}" data-contracttype="2" bindtap="contractType">企业合同</view>
+        </view>
+      </view>
+      <view class="item">
+        <view><text>制式类型</text><text>*</text></view>
+        <view class="select">
+          <view class="{{contractStandard==0?'active':''}}" data-contractstandard="0" bindtap="format">制式</view>
+          <view class="{{contractStandard==1?'active':''}}" data-contractstandard="1" bindtap="format">非制式</view>
+        </view>
+      </view>
+      <view class="item" wx:if="{{type==1}}">
+        <view><text>合同模版</text><text>*</text></view>
+        <view class="muban" bindtap="onClose">
+          <view style="color:{{columnsText?'#000':''}}">{{columnsText?columnsText:'选择配置模板'}} </view>
+          <image src="../../static/right.png"></image>
+        </view>
+      </view>
+      <view wx:if="{{type==2}}">
+        <view class="item">
+          <view><text>合同模版</text><text>*</text></view>
+          <view class="muban" bindtap="onClosemuban">
+            <view style="color:{{columnsmubanText?'#000':''}}">{{columnsmubanText?columnsmubanText:'选择配置模板'}} </view>
+            <image src="../../static/right.png"></image>
+          </view>
+        </view>
+        <view class="item">
+          <view><text>企业</text><text>*</text></view>
+          <view class="muban" bindtap="seleenterprise">
+            <view style="color:{{qiyeInfo?'#000':''}}">{{qiyeInfo?qiyeInfo.companyName:'请选择企业'}}</view>
+            <image src="../../static/right.png"></image>
+          </view>
+        </view>
+        <view class="qyinfo" wx:if="{{qiyeInfo}}">
+          <view class="text">纳税人类：{{qiyeInfo.taxpayerType}}</view>
+          <view class="text">企业地址：{{qiyeInfo.companyAddr}}</view>
+          <view class="text">法人代表：{{qiyeInfo.companyFaren}}</view>
+          <view class="text">注册资金(万)：{{qiyeInfo.registeredCapital}}</view>
+          <view class="text">币种：{{qiyeInfo.currency}}</view>
+          <view class="text">统一社会信用代码：{{qiyeInfo.socialCredit}}</view>
+        </view>
+      </view>
+    </view>
+
+
+    <view class="box" wx:if="{{type==1}}">
+      <view class="item">
+        <view><text>租客姓名</text><text>*</text></view>
+        <view><input type="text" value="{{nickname}}" bindinput='bindNickname' placeholder="请填写"
+            placeholder-class="place" /></view>
+      </view>
+      <view class="item">
+        <view><text>手机号码</text><text>*</text></view>
+        <view><input type="text" value="{{phone}}" bindinput='bindPhone' placeholder="请填写" placeholder-class="place" />
+        </view>
+      </view>
+      <view class="item">
+        <view><text>证件类型</text><text>*</text></view>
+        <view class="muban" bindtap="onCloseSf">
+          <view style="color:#000">{{typeSf}}</view>
+          <image src="../../static/right.png"></image>
+        </view>
+      </view>
+      <view class="item">
+        <view><text>证件号</text><text>*</text></view>
+        <view><input type="text" value="{{sfzNo}}" bindinput="bindsfzNo" placeholder="请填写" placeholder-class="place" />
+        </view>
+      </view>
+      <view class="item">
+        <view><text>性别</text><text>*</text></view>
+        <view class="sex">
+          <view class="{{gender==1?'active':''}}" bindtap="clickGender" data-gender="1">男</view>
+          <view class="{{gender==0?'active':''}}" bindtap="clickGender" data-gender="0">女</view>
+        </view>
+      </view>
+      <view class="item">
+        <view><text>联系地址</text><text>*</text></view>
+        <view><input type="text" bindinput='bindAddress' value="{{homeAddress}}" placeholder="请填写"
+            placeholder-class="place" /></view>
+      </view>
+    </view>
+
+    <view class="other" wx:if="{{type==1}}">其它信息</view>
+    <view wx:if="{{type==1}}">
+      <view class="item">
+        <view><text>渠道来源</text></view>
+        <view class="muban" bindtap="onCloseMark">
+          <view style="color:{{typeMark?'#000':''}}">{{typeMark?typeMark:'请选择'}}</view>
+          <image src="../../static/right.png"></image>
+        </view>
+      </view>
+      <view class="item">
+        <view><text>紧急联系人</text></view>
+        <view><input type="text" value="{{emergencyPeo}}" bindinput="bindeMergencyPeo" placeholder="请填写"
+            placeholder-class="place" /></view>
+      </view>
+      <view class="item">
+        <view><text>紧急联系人电话</text></view>
+        <view><input type="text" placeholder="请填写" value="{{emergencyPeoPhone}}" bindinput="bindeMergencyPeoPhone"
+            placeholder-class="place" /></view>
+      </view>
+      <view class="item">
+        <view><text>银行卡号</text></view>
+        <view><input type="text" placeholder="请填写" value="{{cardNo}}" bindinput="bindeCardNo"
+            placeholder-class="place" /></view>
+      </view>
+      <view class="item">
+        <view><text>所属银行</text></view>
+        <view><input type="text" placeholder="请填写" value="{{cardType}}" bindinput="bindeCardType"
+            placeholder-class="place" /></view>
+      </view>
+      <view class="item">
+        <view><text>支行</text></view>
+        <view><input type="text" placeholder="请填写" value="{{cardTypeZhihang}}" bindinput="bindeCardTypeZhihang"
+            placeholder-class="place" /></view>
+      </view>
+      <view class="item">
+        <view><text>紧急联系邮箱</text></view>
+        <view><input type="text" placeholder="请填写" value="{{urgentEmail}}" bindinput="bindeUrgentEmail"
+            placeholder-class="place" /></view>
+      </view>
+    </view>
+    <view class="together" wx:if="{{type==2}}">
+      <view>联系人</view>
+      <view></view>
+    </view>
+    <view wx:if="{{type==2}}">
+      <view class="item">
+        <view><text>姓名</text><text>*</text></view>
+        <view><input type="text" value="{{nickname}}" bindinput='bindNickname' placeholder="请填写"
+            placeholder-class="place" /></view>
+      </view>
+      <view class="item">
+        <view><text>手机号</text><text>*</text></view>
+        <view><input type="text" value="{{phone}}" bindinput='bindPhone' placeholder="请填写" placeholder-class="place" />
+        </view>
+      </view>
+
+    </view>
+    <view class="together" wx:if="{{type==2}}">
+      <view>入住人</view>
+      <view></view>
+    </view>
+    <view wx:if="{{type==2}}">
+      <view class="item">
+        <view><text>姓名</text><text>*</text></view>
+        <view><input type="text" value="{{lodgerName}}" bindinput='bindLodgerName' placeholder="请填写"
+            placeholder-class="place" /></view>
+      </view>
+      <view class="item">
+        <view><text>手机号</text><text>*</text></view>
+        <view><input type="text" value="{{lodgerPhone}}" bindinput='bindLodgerPhone' placeholder="请填写"
+            placeholder-class="place" /></view>
+      </view>
+      <view class="item">
+        <view><text>证件类型</text><text>*</text></view>
+        <view class="muban" bindtap="onCloseSf">
+          <view style="color:#000">{{typeSf}}</view>
+          <image src="../../static/right.png"></image>
+        </view>
+      </view>
+      <view class="item">
+        <view><text>证件号</text><text>*</text></view>
+        <view><input type="text" value="{{lodgerIdcard}}" bindinput="bindLodgerIdcard" placeholder="请填写"
+            placeholder-class="place" /></view>
+      </view>
+      <view class="item">
+        <view><text>性别</text><text>*</text></view>
+        <view class="sex">
+          <view class="{{lodgerSex==1?'active':''}}" bindtap="clicklodgerSex" data-gender="1">男</view>
+          <view class="{{lodgerSex==0?'active':''}}" bindtap="clicklodgerSex" data-gender="0">女</view>
+        </view>
+      </view>
+      <view class="item">
+        <view><text>联系地址</text><text>*</text></view>
+        <view><input type="text" bindinput='bindlodgerAddr' value="{{lodgerAddr}}" placeholder="请填写"
+            placeholder-class="place" /></view>
+      </view>
+      <view class="item">
+        <view><text>紧急联系人</text></view>
+        <view><input type="text" value="{{emergencyPeo}}" bindinput="bindeMergencyPeo" placeholder="请填写"
+            placeholder-class="place" /></view>
+      </view>
+      <view class="item">
+        <view><text>紧急联系人电话</text></view>
+        <view><input type="text" placeholder="请填写" value="{{emergencyPeoPhone}}" bindinput="bindeMergencyPeoPhone"
+            placeholder-class="place" /></view>
+      </view>
+    </view>
+
+
+    <view class="prove">
+      <view>证明</view>
+      <view class="uploader">
+        <van-uploader file-list="{{ fileList0 }}" bind:delete="deleteImg" max-count="1" data-type="0" data-typeid="120"
+          bind:after-read="afterRead">
+          <image src="../../static/carjust.png"></image>
+        </van-uploader>
+        <van-uploader file-list="{{ fileList1 }}" bind:delete="deleteImg" max-count="1" data-type="1" data-typeid="120"
+          bind:after-read="afterRead">
+          <image src="../../static/carback.png"></image>
+        </van-uploader>
+        <van-uploader file-list="{{ fileList2 }}" bind:delete="deleteImg" max-count="1" data-type="2" data-typeid="120"
+          bind:after-read="afterRead">
+          <image src="../../static/word.png"></image>
+        </van-uploader>
+        <van-uploader file-list="{{ fileList3 }}" bind:delete="deleteImg" max-count="1" data-type="3" data-typeid="120"
+          bind:after-read="afterRead">
+          <image src="../../static/other.png"></image>
+        </van-uploader>
+      </view>
+    </view>
+
+
+
+
+
+
+
+    <view class="together">
+      <view>同住人信息</view>
+      <view bindtap="together">添加同住人</view>
+    </view>
+    <view class="boxpeo">
+      <van-swipe-cell right-width="{{ 65 }}" wx:for="{{cotenantList}}" wx:key="id" wx:for-item='item'
+        wx:for-index="index">
+        <van-cell-group>
+          <view class="item" bindtap="together" data-id="{{item.id}}" data-index="{{index}}" data-item="{{item}}">
+            <image src="../../static/people.pic"></image>
+            <view>
+              <view>
+                <view>{{item.nickname}}</view>
+                <view>手机号：{{item.phone}}</view>
+              </view>
+              <view>身份证号：{{item.sfzNo}}</view>
+            </view>
+          </view>
+        </van-cell-group>
+        <view slot="right" class="del" bindtap="delcoten" data-index="{{index}}">删除</view>
+      </van-swipe-cell>
+
+    </view>
+    <view class="btn">
+      <view>保存</view>
+    </view>
+
+  </view>
+
+  <view class="info infohetong" wx:if="{{activetip==2}}">
+    <view class="box">
+      <view class="item" wx:if="{{type==  2}}">
+        <view><text>合同类型</text><text>*</text></view>
+        <view class="select">
+          <view class="{{frame==1?'active':''}}" bindtap="bindframe" data-frame="1">普通合同编号</view>
+          <view class="{{frame==2?'active':''}}" bindtap="bindframe" data-frame="2">框架合同编号</view>
+        </view>
+      </view>
+      <view class="item" wx:if="{{type==2&&frame==2}}">
+        <view><text>框架编号</text><text>*</text></view>
+        <view class="muban" bindtap="onCloseNo">
+          <view style="color:{{columnsNoId?'#000':''}}">{{columnsNoId?columnsNoId:'请选择'}}</view>
+          <image src="../../static/right.png"></image>
+        </view>
+      </view>
+      <view class="item">
+        <view><text>合同编号</text></view>
+        <view><input type="text" placeholder="请填写" value="{{no}}" disabled="{{true}}" placeholder-class="place" />
+        </view>
+      </view>
+    </view>
+
+    <view class="item">
+      <view><text>成交方式</text><text>*</text></view>
+      <view class="muban" bindtap="onCloseMarkMode">
+        <view style="color:{{typeMarkMode?'#000':''}}">{{typeMarkMode?typeMarkMode:'请选择'}}</view>
+        <image src="../../static/right.png"></image>
+      </view>
+    </view>
+    <view class="item" style="border:none">
+      <view><text>合同期限</text></view>
+      <view bindtap="onDisplay">{{startTime}} 至 {{endTime}} </view>
+    </view>
+    <view class="time" style="border-bottom:1rpx solid #F4F4F4;">
+      <view> 签约时长</view>
+      <view>
+        <view bindtap="setmonth" data-month="3">季度</view>
+        <view bindtap="setmonth" data-month="6">半年</view>
+        <view bindtap="setmonth" data-month="12">1年</view>
+      </view>
+    </view>
+    <view class="item" style="border:none">
+      <view><text>免租期限</text></view>
+      <view> <text style="margin-right:20rpx" bindtap="onDisplayfree">{{freeStartDate?(freeStartDate+'至'+freeEndDate)
+          :'请选择'}} </text>
+        <van-icon name="close" bind:click='closeFree' size='36rpx' color="#55D970" />
+      </view>
+    </view>
+    <view class="item">
+      <view><text>租金</text><text>*</text></view>
+      <view><input type="text" placeholder="请填写" value="{{jiage}}" bindinput="bindjiage"
+          placeholder-class="place" /><text>元/月</text></view>
+    </view>
+
+    <view class="item">
+      <view><text>押金</text><text>*</text></view>
+      <view><input type="text" placeholder="请填写" value="{{yaJin}}" bindinput="bindyaJin"
+          placeholder-class="place" /><text>元</text></view>
+    </view>
+
+    <view class="item">
+      <view><text>付款方式</text><text>*</text></view>
+      <view class="muban" bindtap="onClosecost">
+        <view style="color:{{columnsCostText?'#000':''}}">{{columnsCostText?columnsCostText:'请选择'}}</view>
+        <image src="../../static/right.png"></image>
+      </view>
+    </view>
+    <view class="item">
+      <view><text>收租日</text><text>*</text></view>
+      <view class="select">
+        <view class="{{tiqianType==0?'active':''}}" bindtap="tiqian" data-tiqiantype="0">提前付款天数</view>
+        <view class="{{tiqianType==1?'active':''}}" bindtap="tiqian" data-tiqiantype="1">固定付款日期</view>
+      </view>
+    </view>
+    <view class="item">
+      <view><text>{{tiqianType==0?'提前付款天数':'固定付款日期'}} </text><text>*</text></view>
+      <view><input type="text" placeholder="请填写" value="{{tiqianDays}}" bindtap="bindtiqianDays"
+          placeholder-class="place" /><text>{{tiqianType==0?'天':'号'}}</text></view>
+    </view>
+
+
+
+    <view class="item">
+      <view><text>签约时间</text><text>*</text></view>
+      <view class="muban" bindtap="onDisplaySign">
+        <view style="color:{{time?'#000':''}}">{{time?time:'请选择'}}</view>
+        <image src="../../static/right.png"></image>
+      </view>
+    </view>
+    <view class="box">
+      <view class="items">
+        <view><text>补充说明</text></view>
+        <textarea placeholder="请输入补充说明" value="{{buchongRemark}}" bindtap="bindbuchongRemark"
+          placeholder-class="place"></textarea>
+      </view>
+      <view class="items">
+        <view style="margin-bottom:10rpx"><text>合同附件</text></view>
+        <van-uploader file-list="{{ fileListcontract }}" bind:delete="deleteImg" bind:after-read="afterRead"
+          data-type="" data-typeid="4" />
+      </view>
+    </view>
+    <view class="together">
+      <view>其它费用</view>
+      <view bindtap="addcost">添加费用</view>
+    </view>
+    <view class="list">
+      <view class="listItem" wx:for="{{otherFeeData}}" wx:for-item='item' wx:key="{{id}}" bindtap="addcost"
+      wx:for-index="index" data-item="{{item}}" data-index="{{index}}" >
+        <image src="../../static/money.png"></image>  
+        <view class="iteminfo">
+          <view>
+            <text>{{item.type}}</text> <text>{{item.feiYongMoney}}</text> <text>{{item.typeMode}}</text>
+          </view>
+          <view>描述：{{item.feiYongDesc}}</view>
+        </view>
+        <image src="../../static/right.png"></image>
+      </view>
+    </view>
+
+
+
+    <view class="together">
+      <view>成交信息</view>
+      <view></view>
+    </view>
+    <view class="item">
+      <view><text>签约人</text><text>*</text></view>
+      <view class="muban" bindtap="selepeople">
+        <view style="color:#000">{{backInfo.nickName?backInfo.nickName:'请选择'}}</view>
+        <image src="../../static/right.png"></image>
+      </view>
+    </view>
+    <view class="item">
+      <view><text>成交部门</text><text>*</text></view>
+      <view class="muban">
+        <view style="color:#000">{{backInfo.dptm}}</view>
+        <!-- <image src="../../static/right.png"></image> -->
+      </view>
+    </view>
+    <view class="together">
+      <view></view>
+      <view bindtap="modify" data-type="0"> 添加协助人</view>
+    </view>
+    <view class="people" bindtap="modify" wx:for-index="index" data-type="1" data-index="{{index}}" data-item="{{item}}"
+      wx:for="{{list}}" wx:for-item='item' wx:key="id" data-id="{{item.userid}}">
+      <image src="../../static/people.pic"></image>
+      <view>{{item.t_fzr_position}}：{{item.t_fzr_name}}</view>
+      <image src="../../static/right.png"></image>
+    </view>
+
+    <view class="btn">
+      <view>保存</view>
+    </view>
+
+  </view>
+
+
+  <view class="info" wx:if="{{activetip==3}}">
+    <view class="together">
+      <view>房源配置</view>
+      <view bindtap="configure">添加配置</view>
+    </view>
+    <view class="property" wx:for-index="index" data-index="{{index}}"  wx:for="{{peizhiList}}" bindtap="configure"  data-type="1" data-item="{{item}}" wx:for-item='item' wx:for-index='index' wx:key="id" >
+      <view>
+        <van-checkbox value="{{ item.check }}" checked-color="#55D970" data-index="{{index}}" bind:change="onChange"></van-checkbox>
+      </view> 
+      <view>
+        <view><text>{{item.peiZhiKey}}</text> <text>数量:{{item.count}}个</text></view>
+        <view>描述：{{item.wpbz}}</view>
+      </view>
+      <image src="../../static/right.png"></image>
+    </view>
+    <view class="items">
+      <view style="margin-bottom:10rpx"><text>合同附件</text></view>
+      <van-uploader file-list="{{ fileListjiaoge }}" bind:delete="deleteImg" bind:after-read="afterRead"
+          data-type="" data-typeid="4"  data-jiaoge="1"/>
+    </view>
+    <view class="btn">
+      <view>创建合同</view>
+    </view>
+  </view>
+</view>
+
+
+
+<van-popup show="{{ show }}" position="bottom" custom-style="height: 500rpx;" bind:close="onClose">
+  <view class="pickers">
+    <van-picker show-toolbar confirm-button-text="确定" cancel-button-text="取消" bind:cancel="onClose"
+      bind:change="onChange" bind:confirm="onConfirm" columns="{{ columns }}" />
+  </view>
+</van-popup>
+
+<van-popup show="{{ showmuban }}" position="bottom" custom-style="height: 500rpx;" bind:close="onClosemuban">
+  <view class="pickers">
+    <van-picker show-toolbar confirm-button-text="确定" cancel-button-text="取消" bind:cancel="onClosemuban"
+      bind:change="onChangemuban" bind:confirm="onConfirmmuban" columns="{{ columnsmuban }}" />
+  </view>
+</van-popup>
+
+
+<van-popup show="{{ showSf }}" position="bottom" custom-style="height: 500rpx;" bind:close="onCloseSf">
+  <view class="pickers">
+    <van-picker show-toolbar confirm-button-text="确定" cancel-button-text="取消" bind:cancel="onCloseSf"
+      bind:change="onChangeSf" bind:confirm="onConfirmSf" columns="{{ columnsSf }}" />
+  </view>
+</van-popup>
+
+<van-popup show="{{ showMark }}" position="bottom" custom-style="height: 500rpx;" bind:close="onCloseMark">
+  <view class="pickers">
+    <van-picker show-toolbar confirm-button-text="确定" cancel-button-text="取消" bind:cancel="onCloseMark"
+      bind:change="onChangeMark" bind:confirm="onConfirmMark" columns="{{ columnsMark }}" />
+  </view>
+</van-popup>
+
+<van-popup show="{{ showMarkMode }}" position="bottom" custom-style="height: 500rpx;" bind:close="onCloseMarkMode">
+  <view class="pickers">
+    <van-picker show-toolbar confirm-button-text="确定" cancel-button-text="取消" bind:cancel="onCloseMarkMode"
+      bind:change="onChangeMarkMode" bind:confirm="onConfirmMarkMode" columns="{{ columnsMarkMode }}" />
+  </view>
+</van-popup>
+
+
+
+<van-popup show="{{ showcost }}" position="bottom" custom-style="height: 500rpx;" bind:close="onClosecost">
+  <view class="pickers">
+    <van-picker show-toolbar confirm-button-text="确定" cancel-button-text="取消" bind:cancel="onClosecost"
+      bind:change="onChangecost" bind:confirm="onConfirmcost" columns="{{ columnsCost }}" />
+  </view>
+</van-popup>
+
+<van-popup show="{{ showNo }}" position="bottom" custom-style="height: 500rpx;" bind:close="onCloseNo">
+  <view class="pickers">
+    <van-picker show-toolbar confirm-button-text="确定" cancel-button-text="取消" bind:cancel="onCloseNo"
+      bind:change="onChangeNo" bind:confirm="onConfirmNo" columns="{{ columnsNo }}" />
+  </view>
+</van-popup>
+
+<van-calendar show="{{ showdate }}" bind:close="onClosedate" min-date="{{ minDate }}" max-date="{{ maxDate }}"
+  bind:confirm="onConfirmdate" type="range" default-date="{{[defaultDatestat,defaultDateend]}}" />
+
+
+<van-calendar show="{{ showdatefree }}" bind:close="onClosedatefree" min-date="{{ minDatefree }}"
+  max-date="{{ maxDatefree }}" bind:confirm="onConfirmdatefree" default-date="{{[defaultDatestatfree]}}" type="range" />
+
+<van-calendar show="{{ showdSign }}" bind:close="onCloseSign" min-date="{{ minDate }}" max-date="{{ maxDate }}"
+  bind:confirm="onConfirmSign" default-date="{{defaultDatestat}}" />

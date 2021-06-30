@@ -1,0 +1,52 @@
+<view class="together">
+  <head headTxet="添加同住人"></head>
+ 
+  <view class="box">
+    <view class="item">
+      <view><text>同住人姓名</text></view>
+      <view ><input type="text" value="{{nickname}}" bindinput="bindnickname" placeholder="请填写" placeholder-class="place" /></view>
+    </view>
+    <view class="item">
+      <view><text>电话</text></view>
+      <view ><input type="text" value="{{phone}}" bindinput="bindPhone" placeholder="请填写" placeholder-class="place" /></view>
+    </view>
+    <view class="item">
+      <view><text>身份证号</text></view>
+      <view ><input type="text" value="{{sfzNo}}" bindinput="bindsfzNo" placeholder="请填写" placeholder-class="place" /></view>
+    </view>
+
+    <view class="item">
+      <view><text>性别</text></view>
+      <view class="sex">
+        <view class="{{gender==1?'active':''}}" bindtap="gendersel" data-gender="1">男</view>
+        <view class="{{gender==0?'active':''}}" bindtap="gendersel" data-gender="0">女</view>
+      </view>
+    </view>
+  </view>
+  <view class="prove">
+      <view>证明</view>
+      <view class="uploader">
+        <van-uploader file-list="{{ fileList0 }}" bind:delete="deleteImg" max-count="1" data-type="0"
+          bind:after-read="afterRead">
+          <image src="../../static/carjust.png"></image>
+        </van-uploader>
+        <van-uploader file-list="{{ fileList1 }}" bind:delete="deleteImg" max-count="1" data-type="1"
+          bind:after-read="afterRead">
+          <image src="../../static/carback.png"></image>
+        </van-uploader>
+        <van-uploader file-list="{{ fileList2 }}" bind:delete="deleteImg" max-count="1" data-type="2"
+          bind:after-read="afterRead">
+          <image src="../../static/word.png"></image>
+        </van-uploader>
+        <van-uploader file-list="{{ fileList3 }}" bind:delete="deleteImg" max-count="1" data-type="3"
+          bind:after-read="afterRead">
+          <image src="../../static/other.png"></image>
+        </van-uploader>
+      </view>
+    </view>
+
+
+  <view class="btn">
+      <view bindtap="save">保存</view>
+    </view>
+</view>

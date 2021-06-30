@@ -1,0 +1,268 @@
+.contractdetail {
+  background-color: #F8F8F8;
+  height: 100%;
+}
+
+.list {
+  padding-top: 138rpx;
+}
+
+.item {
+  padding: 10rpx 30rpx 0 30rpx;
+  background-color: #fff;
+  position: relative;
+
+}
+
+.item>image {
+  width: 80rpx;
+  height: 80rpx;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.itemtit {
+
+  font-size: 32rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #000000;
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  font-size: 22rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #ACACAC;
+  margin-top: 10rpx;
+}
+
+.info view:nth-child(1) {
+  color: #fff;
+  border-radius: 4rpx;
+  padding: 0 8rpx;
+  height: 30rpx;
+  line-height: 30rpx;
+}
+
+.info view:nth-child(2) {
+  flex: 1;
+  font-size: 26rpx;
+  margin: 0 20rpx;
+}
+
+.info view:nth-child(3) {
+  font-size: 28rpx;
+  color: #36CA8F;
+}
+
+.text {
+  font-size: 26rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #ACACAC;
+  margin-top: 10rpx;
+}
+
+.tab {
+  background-color: #fff;
+  height: 90rpx;
+  display: flex;
+
+}
+
+.tabbar {
+  width: 187.5rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+  font-size: 30rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #000000;
+  position: relative;
+}
+
+.tabbar>view:nth-child(2) {
+  width: 57.5rpx;
+  height: 4rpx;
+  position: absolute;
+  bottom: -1;
+  left: 65rpx;
+}
+
+.avtive>view:nth-child(1) {
+  color: #36CA8F;
+}
+
+.avtive>view:nth-child(2) {
+  background-color: #36CA8F;
+}
+
+.box {
+  margin-top: 20rpx;
+}
+
+.zukeinfo {
+  padding: 20rpx 30rpx;
+  background-color: #fff;
+}
+
+.name {
+  display: flex;
+  align-items: center;
+  padding-bottom: 20rpx;
+}
+
+.name>image {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 20rpx;
+}
+
+.name>view {
+  font-size: 30rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #000000;
+}
+
+
+.listinfo {
+  background-color: #fff;
+}
+
+.listItem {
+  display: flex;
+  padding: 20rpx 30rpx;
+  align-items: center;
+  position: relative;
+  margin-top: 20rpx;
+}
+
+.listItem>image:nth-child(1) {
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.listItem>image:nth-child(3) {
+  width: 22rpx;
+  height: 22rpx;
+}
+
+.iteminfo {
+  flex: 1;
+  margin: 0 20rpx;
+  font-size: 26rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+}
+
+.iteminfo>view:nth-child(1) {
+  display: flex;
+  align-items: center;
+
+}
+
+.iteminfo>view:nth-child(1)>view:nth-child(1) {
+  /* background-color: red; */
+  color: #fff;
+  font-size: 22rpx;
+  padding: 2rpx 6rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  border-radius: 4rpx;
+  line-height: 30rpx;
+  height: 30rpx;
+  margin-right: 20rpx;
+}
+
+.iteminfo>view:nth-child(1)>view:nth-child(2) {
+
+  color: #000000;
+}
+
+.iteminfo>view:nth-child(2),
+.iteminfo>view:nth-child(3) {
+  color: #A9A9A9;
+  margin-top: 8rpx;
+}
+
+.listItem>image:nth-child(4) {
+  width: 80rpx;
+  height: 80rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+  
+}
+
+.contract{
+  padding: 20rpx 30rpx;
+  background-color: #fff;
+}
+.part{
+  display: flex;
+  
+}
+.part >view{
+  width: 345rpx;
+}
+.text text{
+  margin-right: 30rpx;
+}
+
+.title {
+  box-sizing: border-box;
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #000000;
+  padding-top: 50rpx;
+  padding-bottom: 15rpx;
+}
+
+
+.subscriber {
+  padding: 20rpx 0rpx;
+  display: flex;
+  align-items: center;
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #000000;
+  border-bottom: 1rpx solid #F4F4F4;
+}
+
+.subscriber>image {
+  width: 100rpx;
+  height: 100rpx;
+  margin-right: 20rpx;
+}
+
+.subscriber>view {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.subscriber>view >view>view:nth-child(2){
+  margin-top: 12rpx;
+}
+.subscriber>view>image {
+  width: 42rpx;
+  height: 42rpx;
+}
+
+.button{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30rpx;
+}
+.tzinfo{
+  background-color: #fff;
+  padding: 20rpx 30rpx;
+}
