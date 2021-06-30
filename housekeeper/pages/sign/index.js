@@ -796,7 +796,13 @@ Page({
       },
     });
   },
- 
+  save(){
+    
+
+
+
+
+  },
   saveImg(obj) {
     util.request(`v2/accessory/pic/save`, obj).then((res) => {
       util.showToast('上传成功！')

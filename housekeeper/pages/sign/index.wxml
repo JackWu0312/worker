@@ -459,7 +459,7 @@
           data-type="" data-typeid="4"  data-jiaoge="1"/>
     </view>
     <view class="btn">
-      <view>创建合同</view>
+      <view bindtap="save">创建合同</view>
     </view>
   </view>
 </view>
