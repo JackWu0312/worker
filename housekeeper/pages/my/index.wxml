@@ -1,0 +1,57 @@
+<view class="info">
+  <view class="infobg"></view>
+  <view class="infoBox">
+    <view>
+     <image wx:if="{{info.pic}}" src="{{info.pic}}"></image>
+      <image wx:else src="../../static/info.png"></image>
+    </view>
+    <view>{{info.nickName}}</view>
+    <view>做一个有态度的业务员</view>
+    <view>
+      <view>
+        <image src="../../static/name.png" style="width: 18rpx;height: 26rpx;"></image>
+        <view>{{info.companyName}}</view>
+      </view>
+      <view>
+        <image src="../../static/my.png"  style="width: 24rpx;height: 23rpx;"></image>
+        <view>{{info.phone}}</view>
+      </view>
+      <view>
+        <image src="../../static/adress.png"  style="width: 17rpx;height: 21rpx;"></image>
+        <view>{{info.companyCityName}}</view>
+      </view>
+    </view>
+  </view>
+
+  
+
+</view>
+<view class="infoBarBox">
+  <view class="infoBar">
+    <image src="../../static/clock.png"></image>
+    <view>考勤打卡</view>
+  </view>
+  <view class="infoBar">
+    <image src="../../static/approvalOpen.png"></image>
+    <view>考勤审批</view>
+  </view>
+  <view class="infoBar">
+    <image src="../../static/trajectory.png"></image>
+    <view>我的轨迹</view>
+  </view>
+</view>
+<view class="infoBarBox">
+  <view class="infoBar">
+    <image src="../../static/scan.png"></image>
+    <view>扫一扫</view>
+  </view>
+  <view class="infoBar">
+    <image src="../../static/feedback.png"></image>
+    <view>问题反馈</view>
+  </view>
+  <view class="infoBar">
+    <image src="../../static/setup.png"></image>
+    <view>设置</view>
+  </view>
+</view>
+<tabbar tabbar="{{ tabbar }}"></tabbar>

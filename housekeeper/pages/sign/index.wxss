@@ -1,0 +1,591 @@
+.sign {
+  background-color: #F8F8F8;
+  /* padding-bottom: 20rpx; */
+  height: 100%;
+}
+
+.top {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 99;
+}
+
+.head {
+  width: 750rpx;
+  height: 316rpx;
+  position: relative;
+  box-sizing: border-box;
+  background: linear-gradient(270deg, #3BCC8A 0%, #5BDD66 100%);
+}
+
+.title {
+  position: relative;
+}
+
+.title image {
+  width: 19rpx;
+  height: 35rpx;
+  position: absolute;
+  top: 68rpx;
+  left: 30rpx;
+}
+
+.title view {
+  font-size: 36rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  position: absolute;
+  top: 60rpx;
+  left: 30rpx;
+  color: #FFFFFF;
+  left: 337rpx;
+}
+
+.info {
+  padding-top: 316rpx;
+}
+
+.tipbox {
+  width: 36rpx;
+  height: 36rpx;
+  border-radius: 100%;
+  border: 10rpx solid #00A36A;
+  box-sizing: border-box;
+  position: absolute;
+  top: 197rpx;
+  left: 92rpx;
+  z-index: 2;
+  background-color: #55D970;
+}
+
+.activetip {
+  border-color: #FFFFFF;
+}
+
+.tipbox:nth-child(2) {
+  left: 357rpx;
+}
+
+.tipbox:nth-child(3) {
+  left: 622rpx;
+}
+
+.tipbox view {
+  font-size: 28rpx;
+  width: 130rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #FFFFFF;
+  margin-top: 46rpx;
+  margin-left: -45rpx;
+}
+
+.solid {
+  width: 503rpx;
+  height: 4rpx;
+  position: absolute;
+  left: 123rpx;
+  top: 214rpx;
+  background-color: #00A36A;
+}
+
+.box {
+  margin-top: 20rpx;
+}
+
+.item {
+  height: 90rpx;
+  background-color: #fff;
+  padding: 0 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1rpx solid #F4F4F4;
+}
+
+.item>view:nth-child(1) {
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #000000;
+}
+
+.item>view:nth-child(1)>text:nth-child(2) {
+  margin-left: 20rpx;
+  color: #00C77A;
+  padding-top: 15rpx;
+}
+
+.item>view:nth-child(2)>input {
+  height: 90rpx;
+  width: 300rpx;
+  text-align: right;
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #000000;
+}
+
+.infohetong .item>view:nth-child(2) {
+  display: flex;
+  align-items: center;
+}
+
+.infohetong .item>view:nth-child(2)>text {
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #000000;
+  margin-left: 10rpx;
+}
+
+.place {
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #A9A9A9;
+}
+
+.tag {
+  width: 190rpx;
+  height: 60rpx;
+  background: #55D970;
+  border-radius: 10rpx;
+  text-align: center;
+  line-height: 60rpx;
+  font-size: 26rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #FFFFFF;
+}
+
+
+
+
+.active {
+  background: #55D970;
+  color: #FFFFFF !important;
+}
+
+.select {
+  width: 360rpx;
+  height: 60rpx;
+  border-radius: 10rpx;
+  border: 2rpx solid #55D970;
+  display: flex;
+}
+
+.select view:nth-child(1) {
+  width: 180rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 26rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #55D970;
+}
+
+.select view:nth-child(2) {
+  width: 180rpx;
+  line-height: 60rpx;
+  text-align: center;
+  font-size: 26rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #55D970;
+}
+
+.muban {
+  display: flex;
+  align-items: center;
+}
+
+.muban view:nth-child(1) {
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #A9A9A9;
+}
+
+.muban image {
+  width: 21rpx;
+  height: 21rpx;
+  margin-left: 15rpx;
+}
+
+.sex {
+  width: 130rpx;
+  height: 60rpx;
+  border-radius: 10rpx;
+  border: 2rpx solid #55D970;
+  display: flex;
+}
+
+.sex view {
+  width: 66rpx;
+  line-height: 60rpx;
+  text-align: center;
+  font-size: 26rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #55D970;
+}
+
+
+.other {
+  height: 90rpx;
+  line-height: 90rpx;
+  padding-left: 30rpx;
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #C5C5C5;
+}
+
+.prove {
+  padding: 0 30rpx;
+  padding-bottom: 15rpx;
+  background-color: #fff;
+}
+
+.prove view:nth-child(1) {
+  height: 60rpx;
+  font-size: 28rpx;
+  line-height: 60rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #000000;
+}
+
+.prove view:nth-child(2) {
+  display: flex;
+  justify-content: space-between;
+}
+
+.prove view:nth-child(2) image {
+  width: 160rpx;
+  height: 160rpx;
+}
+
+.together {
+  padding-top: 20rpx;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 30rpx;
+  height: 60rpx;
+  font-size: 28rpx;
+  align-items: center;
+  line-height: 60rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  background-color: #F8F8F8;
+}
+
+.together view:nth-child(1) {
+  color: #C5C5C5;
+}
+
+.together view:nth-child(2) {
+  color: #55D970;
+}
+
+/* .boxpeo {
+  padding: 0 30rpx;
+} */
+
+.boxpeo .item {
+  height: 160rpx;
+  border-bottom: 1rpx solid #EAEAEA;
+  display: flex;
+  align-items: center;
+}
+
+.boxpeo .item image {
+  width: 100rpx;
+  height: 100rpx;
+  margin-right: 20rpx;
+}
+
+.boxpeo .item>view {
+  flex: 1;
+}
+
+.boxpeo .item>view>view:nth-child(1) {
+  display: flex;
+  justify-content: space-between;
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+}
+
+.boxpeo .item>view>view:nth-child(1)>view:nth-child(1) {
+  color: #111F37;
+}
+
+.boxpeo .item>view>view:nth-child(1)>view:nth-child(2) {
+  color: #C4C9D3;
+}
+
+.boxpeo .item>view>view:nth-child(2) {
+  margin-top: 20rpx;
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #111F37;
+}
+
+.btn {
+  width: 750rpx;
+  height: 200rpx;
+  background-color: #F8F8F8;
+  box-sizing: border-box;
+  padding: 0 30rpx;
+  display: flex;
+  align-items: center;
+}
+
+.btn view {
+  width: 100%;
+  height: 90rpx;
+  border-radius: 45rpx;
+  line-height: 90rpx;
+  text-align: center;
+  font-size: 30rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #FFFFFF;
+  background: linear-gradient(270deg, #3BCC8A 0%, #5BDD66 100%);
+}
+
+.time {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 30rpx;
+  background-color: #fff;
+  align-items: center;
+  padding-bottom: 15rpx;
+}
+
+.time>view:nth-child(1) {
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #000000;
+}
+
+.time>view:nth-child(2) {
+  display: flex;
+  justify-content: flex-end;
+
+}
+
+.time>view:nth-child(2) view {
+  margin-left: 10rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  border-radius: 10rpx;
+  width: 100rpx;
+  border: 1rpx solid #A9A9A9;
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #A9A9A9
+}
+
+
+
+
+
+.items>view:nth-child(1) {
+  padding-top: 20rpx;
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #000000;
+  margin-top: 20rpx;
+}
+
+.items>view:nth-child(1)>text:nth-child(2) {
+  margin-left: 20rpx;
+  color: #00C77A;
+  padding-top: 15rpx;
+}
+
+.items textarea {
+  width: 100%;
+  margin-top: 20rpx;
+  height: 150rpx;
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #000000;
+}
+
+.items {
+  background-color: #fff;
+  padding: 0 30rpx;
+  border-bottom: 1rpx solid #F4F4F4;
+}
+
+.items image {
+  width: 160rpx;
+  height: 160rpx;
+}
+
+.text {
+  font-size: 26rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #ACACAC;
+  margin-top: 10rpx;
+}
+
+.qyinfo {
+  padding: 20rpx 30rpx;
+  background-color: #fff;
+}
+
+.uploader {
+  display: flex;
+  justify-content: space-between;
+  height: 150rpx;
+}
+
+.del {
+  width: 130rpx;
+  height: 100%;
+  background-color: red;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.list {
+  background-color: #fff;
+}
+
+.listItem {
+  display: flex;
+  padding: 20rpx 30rpx;
+  align-items: center;
+  position: relative;
+  border-bottom: 1rpx solid #F8F8F8;
+}
+
+.listItem>image:nth-child(1) {
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.listItem>image:nth-child(3) {
+  width: 22rpx;
+  height: 22rpx;
+}
+
+.iteminfo {
+  flex: 1;
+  margin: 0 20rpx;
+  font-size: 26rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+}
+
+.iteminfo>view:nth-child(1) {
+  display: flex;
+  align-items: center;
+
+}
+.iteminfo text{
+  margin-right: 15rpx;
+}
+.iteminfo>view:nth-child(1)>view:nth-child(1) {
+  color: #fff;
+  font-size: 22rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  border-radius: 4rpx;
+  line-height: 30rpx;
+  height: 30rpx;
+}
+
+.iteminfo>view:nth-child(1)>view:nth-child(2) {
+  color: #000000;
+}
+
+.iteminfo>view:nth-child(2),
+.iteminfo>view:nth-child(3) {
+  color: #A9A9A9;
+  margin-top: 8rpx;
+}
+
+.listItem>image:nth-child(4) {
+  width: 80rpx;
+  height: 80rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+
+.people {
+  width: 750rpx;
+  height: 130rpx;
+  padding: 0 30rpx;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  border-bottom: 1rpx solid #F4F4F4;
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #000000;
+}
+
+.people image:nth-child(1) {
+  width: 75rpx;
+  height: 75rpx;
+}
+
+.people image:nth-child(3) {
+  width: 21rpx;
+  height: 21rpx;
+  position: absolute;
+  right: 30rpx;
+}
+
+.people view {
+  margin-left: 20rpx;
+}
+
+.property{
+  display: flex;
+  min-height: 120rpx;
+  background-color: #fff;
+  align-items: center;
+  border-bottom: 1rpx solid #F8F8F8;
+  padding: 20rpx 30rpx;
+}
+.property>view:nth-child(1){
+  margin-right: 20rpx;
+}
+.property>view:nth-child(2){
+  flex: 1;
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #000000;
+}
+.property>view:nth-child(2) text{
+  margin-right: 20rpx;
+}
+.property> image{
+  width: 21rpx;
+  height: 21rpx;
+  margin-left: 10rpx;
+}

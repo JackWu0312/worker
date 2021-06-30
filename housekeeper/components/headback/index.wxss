@@ -1,0 +1,27 @@
+
+.heads {
+  width: 750rpx;
+  height: 128rpx;
+  background: linear-gradient(270deg, #3BCC8A 0%, #5BDD66 100%);
+  text-align: center;
+  padding-top: 60rpx;
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+
+.image {
+  position: absolute;
+  width: 19rpx;
+  height: 35rpx;
+  left: 30rpx;
+  top: 68rpx;
+}
+
+.text {
+  font-size: 32rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  color: #FFFFFF;
+}

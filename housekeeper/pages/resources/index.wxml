@@ -1,0 +1,92 @@
+<view class="contant">
+  <view class="head">
+    <view class="{{active==1?'active':''}}" bindtap="bindActive" data-index="1">客户管理</view>
+    <view class="{{active==2?'active':''}}" bindtap="bindActive" data-index="2">预定清单</view>
+  </view>
+  <view class="tops" wx:if="{{active==1}}">
+    <view class="select">
+      <view>
+        <view>租赁类型</view>
+        <image src="../../static/select.png"></image>
+      </view>
+      <view>
+        <view>租赁方</view>
+        <image src="../../static/select.png"></image>
+      </view>
+    </view>
+    <view class="item">
+      <view>刘洋  1321111111</view>
+      <view>预定时间：2021.04.12 00:00</view>
+      <view>企业名称：</view>
+      <view>备注信息：</view>
+      <image src="../../static/phone.png"></image>
+    </view>
+  </view>
+  <view class="tops" wx:else>
+    <view class="tab">
+      <view  class="{{tabActive==1?'tabActive':''}}" bindtap="bindTabActive" data-index="1" >全部</view>
+      <view class="{{tabActive==2?'tabActive':''}}" bindtap="bindTabActive" data-index="2" >预定中</view>
+      <view class="{{tabActive==3?'tabActive':''}}" bindtap="bindTabActive" data-index="3" >预定逾期</view>
+      <view class="{{tabActive==4?'tabActive':''}}" bindtap="bindTabActive" data-index="4" >已退订</view>
+      <view class="{{tabActive==5?'tabActive':''}}" bindtap="bindTabActive" data-index="5" >已签约</view>
+    </view>
+
+    <view class="tabItem">
+        <view class="tabItemHead">
+          <view>
+            <view>预定中</view>
+            <view>刘洋  1321111111</view>
+          </view>
+            <image src="../../static/phone.png"></image>
+        </view>
+        <view class="taninfo">预定时间：2021.04.12 00:00</view>
+        <view class="taninfo">房间：联发·尔寓19号楼-1单元-4026室</view>
+        <view class="taninfo">付款方式：微信</view>
+        <view class="taninfo">失效时间：2021-04-22 10：21</view>
+        <view class="tabBtnBox">
+            <view>签约</view>
+            <view>取消预定</view>
+        </view>
+    </view>
+    <view class="tabItem">
+        <view class="tabItemHead">
+          <view>
+            <view>预定中</view>
+            <view>刘洋  1321111111</view>
+          </view>
+            <image src="../../static/phone.png"></image>
+        </view>
+        <view class="taninfo">预定时间：2021.04.12 00:00</view>
+        <view class="taninfo">房间：联发·尔寓19号楼-1单元-4026室</view>
+        <view class="taninfo">付款方式：微信</view>
+        <view class="taninfo">失效时间：2021-04-22 10：21</view>
+        <view class="tabBtnBox" style=" justify-content: center;">
+            <view  bindtap="showPopup">定金激活</view>
+        </view>
+    </view>
+
+  </view>
+
+
+</view>
+
+
+
+
+<van-popup show="{{ show }}"  bind:close="onClose">
+  <view class="pop">
+    <view>定金激活</view>
+    <image src="../../static/close.png"></image>
+    <view bindtap="showPopupshowPick"> <view>请选择房间号</view> <image src="../../static/select.png"></image> </view>
+    <view>保存</view>
+  </view>
+</van-popup>
+
+<van-popup
+  show="{{ showPick }}"
+  position="bottom"
+  custom-style="height: 500rpx"
+  bind:close="onCloseshowPick"
+><van-picker columns="{{ columns }}"  default-index="{{ 4 }}" show-toolbar='true' bind:cancel="onCloseshowPick"
+  bind:confirm="onChange" /></van-popup>
+<tabbar tabbar="{{ tabbar }}"></tabbar>

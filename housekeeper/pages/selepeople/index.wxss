@@ -1,0 +1,88 @@
+
+
+.search {
+  width: 750rpx;
+  height: 110rpx;
+  background-color: #fff;
+  position: fixed;
+  top: 128rpx;
+  left: 0;
+}
+
+.search>view {
+  width: 690rpx;
+  height: 70rpx;
+  border-radius: 6rpx;
+  background-color: #F5F5F5;
+  margin-left: 30rpx;
+  margin-top: 20rpx;
+  display: flex;
+  align-items: center;
+}
+
+.search>view>image {
+  width: 26rpx;
+  height: 26rpx;
+  margin: 0 20rpx;
+}
+
+.search>view input {
+  flex: 1;
+  height: 70rpx;
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #111F37;
+}
+
+.place {
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #C4C9D3;
+}
+
+.box {
+  /* padding-top: 338rpx; */
+  padding: 238rpx 30rpx 50rpx 30rpx;
+}
+
+.item {
+  height: 160rpx;
+  border-bottom: 1rpx solid #EAEAEA;
+  display: flex;
+  align-items: center;
+}
+
+.item image {
+  width: 100rpx;
+  height: 100rpx;
+  margin-right: 20rpx;
+}
+
+.item>view {
+  flex: 1;
+}
+
+.item>view>view:nth-child(1) {
+  display: flex;
+  justify-content: space-between;
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+}
+
+.item>view>view:nth-child(1)>view:nth-child(1) {
+  color: #111F37;
+}
+
+.item>view>view:nth-child(1)>view:nth-child(2) {
+  color: #C4C9D3;
+}
+.item>view>view:nth-child(2) {
+  margin-top: 20rpx;
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #111F37;
+}

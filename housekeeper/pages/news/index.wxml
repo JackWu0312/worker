@@ -1,0 +1,115 @@
+<view class="room">
+  <view class="head">
+    <view class="roomhead">
+      <image src="../../static/back.png"></image>
+      <view>房态</view>
+    </view>
+    <view class="tab">
+      <view class="project" bindtap="showPopup">
+        <!-- <view  class="projectStatus">项目 <image src="../../static/select.png"></image></view> -->
+        <view class="projectSelet">{{selectProject.hiItemName}}</view>
+      </view>
+      <view class="tabitem" bindtap="showDong">
+        <!-- <view class="tabitemStatus">楼栋 <image src="../../static/select.png"></image></view> -->
+        <view class="tabitemSelect">{{dong.name}}号楼</view>
+      </view>
+      <view class="tabitem" bindtap="onshowRent">
+        <!-- <view class="tabitemStatus">房型 <image src="../../static/select.png"></image></view> -->
+        <view class="tabitemSelect">{{fangxing}}</view>
+      </view>
+      <view class="tabitem" bindtap="onShowStatus">
+        <view class="tabitemStatus">{{statusTit}} <image src="../../static/select.png"></image>
+        </view>
+      </view>
+      <view class="tabitem" bindtap="onshowPic">
+        <view class="tabitemStatus"> 价格 <image src="../../static/select.png"></image>
+        </view>
+      </view>
+    </view>
+    <view class="adress">
+      <image src="../../static/adressHome.png"></image>
+      <view>{{selectProject.hiItemName}} {{dong.name}}号楼</view>
+    </view>
+  </view>
+  <view class="box">
+    <view class="boxitem" wx:for="{{list}}" wx:key="id" wx:for-item='item' wx:for-index="index">
+      <view class="boxitemLeft">{{item.louCeng}}层</view>
+      <view class="boxitemRight">
+        <view style="width: {{145*item.houseList.length}}rpx;">
+          <view class="roomBox"  bindtap="detail" data-value="{{value}}" wx:for="{{item.houseList}}" wx:key="id" wx:for-item='value' wx:for-index="valueIndex"
+            style=" background:{{value.status==20?'#00BF67':value.status==40?'#F61C3A':value.status==30?'#F56208':(value.status==10||value.status==11)?'#FFA300':(value.status==50||value.status==51)?'#AFAFAF':value.status==60?'#999999':'#00BF67'}}">
+            <view>
+              <view style="color:#fff">{{value.fangNo}}</view>
+              <view>
+                <image  wx:if="{{value.isElemeter==1||value.isElemeter==2}}" src="../../static/electric.png"></image>
+                <image wx:if="{{value.isWater==1||value.isWater==2}}" src="../../static/water.png"></image>
+              </view>
+            </view>
+            <view>¥{{value.status==20?value.zujin:value.status==40?value.chengzu.jiage:value.status==30?value.houseShouding.money:(value.status==10||value.status==11)?value.houseDecoration.sumPredictMoney:(value.status==50||value.status==51)?value.zujin:value.status==60?value.zujin:value.zujin}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+<tabbar tabbar="{{ tabbar }}"></tabbar>
+
+
+<van-popup show="{{ show }}" position="bottom" custom-style="height: 500rpx;" bind:close="onClose">
+  <view class="pickers">
+    <van-picker default-index="{{ 2 }}" show-toolbar confirm-button-text="确定" cancel-button-text="取消"
+      bind:cancel="onClose" bind:confirm="onConfirm" columns="{{ columns }}" />
+  </view>
+</van-popup>
+
+
+<van-popup show="{{ showDong }}" position="bottom" custom-style="height: 500rpx;" bind:close="onClose">
+  <view class="pickers">
+    <van-picker show-toolbar confirm-button-text="确定" cancel-button-text="取消" bind:cancel="onCloseDong"
+      bind:confirm="onConfirmDong" columns="{{ columnsDong }}" />
+  </view>
+</van-popup>
+
+
+<van-popup show="{{ showRent }}" position="bottom" custom-style="height: 500rpx;" bind:close="onClose">
+  <view class="pickers">
+    <van-picker show-toolbar confirm-button-text="确定" cancel-button-text="取消" bind:cancel="onCloseRent"
+      bind:confirm="onConfirmRent" columns="{{ columnsRent }}" />
+  </view>
+</van-popup>
+
+
+<van-popup show="{{ showStatus }}" position="bottom" custom-style="height: 330rpx" bind:close="onCloseStatus">
+  <view class="status">
+    <view class="statusItem" wx:for="{{statusList}}" bindtap="selectStatus" data-name="{{item.name}}" data-id="{{item.id}}" wx:key="id"
+      wx:for-item='item' wx:for-index="index"
+      style=" background:{{item.id==''?'#edebee':item.id==21||item.id==22||item.id==23||item.id==24||item.id==25?'#00c06c':item.id==40?'#f80500':item.id==30?'#ff913b':item.id==10?'#fec51c':item.id==50?'#afadb0':'#f8a52a'}};color:{{item.id==''?'#000':'#fff'}}">
+      {{item.name=="状态"?'不限':item.name}}
+    </view>
+    <view class="titStatus" wx:if="{{selStatus==22||selStatus==24||selStatus==23||selStatus==25||selStatus==40}}">房屋状态
+    </view>
+    <view wx:if="{{selStatus==22||selStatus==24||selStatus==23||selStatus==25||selStatus==40}}">
+      <view class="statusItem" bindtap="shouding" data-shoudingstatus="" style="background:#edebee;color:#000">全部</view>
+      <view class="statusItem" bindtap="shouding" data-shoudingstatus="1" style="background:#f8a52a">预定</view>
+      <view class="statusItem" bindtap="shouding" data-shoudingstatus="0"  style="background:#00be6c">未预定</view>
+    </view>
+  </view>
+</van-popup>
+
+
+<van-popup show="{{ showPic }}" position="bottom" custom-style="height: 500rpx" bind:close="onClosePic">
+  <view class="pic">
+    <view class="picPar" bindtap="zhujin" data-min="" data-max="">不限</view>
+    <view class="picPar" bindtap="zhujin" data-min="0" data-max="1500">0 - 1500元</view>
+    <view class="picPar" bindtap="zhujin" data-min="1500" data-max="2000">1500 - 2000元</view>
+    <view class="picPar" bindtap="zhujin" data-min="2000" data-max="3000">2000 - 3000元</view>
+    <view class="picPar" bindtap="zhujin" data-min="3000" data-max="5000">3000 - 5000元</view>
+    <view class="picPar">自定义</view>
+    <view class="input">
+      <input type="number"   bindinput='bindmin' placeholder="最小值" value="{{houseViewData.minZujin}}" placeholder-class="placeholder"/> -- <input type="number" bindinput='bindmax'  value="{{houseViewData.maxZujin}}" placeholder="最大值" placeholder-class="placeholder"/>
+    </view>
+    <view class="picBtn" bindtap="sure">确定</view>
+  </view>
+</van-popup>

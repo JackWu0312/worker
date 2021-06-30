@@ -1,0 +1,151 @@
+<!--pages/home/index.wxml-->
+
+<head headTxet="联发尔寓"></head>
+<view class="home topall">
+  <!-- <view class="todo">
+    <view class="title">
+      <view>
+        <view></view>
+        <view>今日待办</view>
+      </view>
+      <view>添加待办</view>
+    </view>
+  </view> -->
+  <view class="room">
+    <view class="title">
+      <view>
+        <view></view>
+        <view>房态</view>
+      </view>
+      <view>进入房态</view>
+    </view>
+    <view class="roomState">
+      <view class="roomCollection">
+        <view>集中</view>
+        <view>
+          <view>{{jizhong.vacancyRate}}</view>
+          <view>空置率</view>
+        </view>
+      </view>
+      <view class="roomStateItem">
+        <view style="color:#36CA8F">{{jizhong.daiZuCount}}</view>
+        <view>可租</view>
+      </view>
+      <view class="roomStateItem">
+        <view style="color:#FFA348">{{jizhong.kongZhi}}</view>
+        <view>空置</view>
+      </view>
+      <view class="roomStateItem">
+        <view style="color:#F97800">{{jizhong.zhuanZu}}</view>
+        <view>转租</view>
+      </view>
+      <view class="roomStateItem">
+        <view style="color:#FF2600">{{jizhong.shenTui}}</view>
+        <view>申退</view>
+      </view>
+      <view class="roomStateItem">
+        <view style="color:#00BDFF">{{jizhong.yuDaoQi}}</view>
+        <view>预到期</view>
+      </view>
+    </view>
+  </view>
+  <view class="management todo">
+    <view class="title">
+      <view>
+        <view></view>
+        <view>我的经营状况</view>
+      </view>
+      <view></view>
+    </view>
+    <view class="managementContent">
+      <view class="managementItem">
+        <image src="../../static/home.png"></image>
+        <view>{{house.bookListCount}}</view>
+        <view>我的预定</view>
+      </view>
+      <view class="managementItem">
+        <image src="../../static/sign.png"></image>
+        <view>{{management.myChengzu}}/{{management.myQianyue}}</view>
+        <view>我的签约</view>
+      </view>
+      <view class="managementItem">
+        <image src="../../static/electronics.png"></image>
+        <view>{{management.pending}}</view>
+        <view>电子签约</view>  
+        <image class="hot" src="../../static/hot.png"></image>
+      </view>
+      <view class="managementItem"> 
+        <image src="../../static/lock.png"></image>
+        <view>{{house.hasLockHouseCount}}</view>
+        <view>电子门锁</view>
+      </view>
+    </view>
+  </view>
+  <view class="management todo">
+    <view class="title">
+      <view>
+        <view></view>
+        <view>装修及租后</view>
+      </view>
+      <view></view>
+    </view>
+    <view class="managementContent">
+      <view class="managementItem">
+        <image src="../../static/cleaning.png"></image>
+        <view>{{renting.cleanPending}}</view>
+        <view>保洁</view>
+      </view>
+      <view class="managementItem">
+        <image src="../../static/repair.png"></image>
+        <view>{{renting.repairPending}}</view>
+        <view>维修</view>
+      </view>
+      <view class="managementItem">
+        <image src="../../static/complaint.png"></image>
+        <view>{{renting.complaintPending}}</view>
+        <view>投诉</view>
+      </view>
+      <view class="managementItem">
+        <image src="../../static/renovation.png"></image>
+        <view>{{renting.decorationPending}}</view>
+        <view>装修</view>
+      </view> 
+    </view>
+  </view>
+  <view class="management todo">
+    <view class="title" style="padding-right:0rpx">
+      <view>
+        <view></view>
+        <view>合同管理</view>
+      </view>
+      <view>
+        <text>催缴（{{management.countOverDue}}）</text>
+        <text>驳回处理（{{management.ZKBAuditStatus+management.YZBAuditStatus}}）</text>
+      </view>
+    </view>
+    <view class="managementContent">
+      <view class="managementItem">
+        <image src="../../static/personal.png"></image>
+        <view>{{management.jiJiangBanChuCount}}</view>
+        <view>个人合同（到期）</view>
+        <image class="hot" src="../../static/thirty.png"></image>
+      </view>
+      <view class="managementItem">
+        <image src="../../static/enterprise.png"></image>
+        <view>{{management.due}}</view>
+        <view>企业合同（到期）</view>
+      </view>
+      <view class="managementItem">
+        <image src="../../static/approval.png"></image>
+        <view>{{management.ZKAuditStatus}}</view>
+        <view>个人合同审批</view>
+      </view>
+      <view class="managementItem">
+        <image src="../../static/approvals.png"></image>
+        <view>{{management.YZAuditStatus}}</view>
+        <view>企业合同审批</view>
+      </view>
+    </view>
+  </view>
+</view>
+<tabbar tabbar="{{ tabbar }}"></tabbar>

@@ -1,0 +1,9 @@
+{
+  "navigationStyle": "custom",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "head":"/components/headback/index",
+    "van-uploader": "@vant/weapp/uploader/index",
+    "van-calendar": "@vant/weapp/calendar/index"
+  }
+}

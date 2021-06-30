@@ -1,0 +1,21 @@
+<view class="selepeople">
+  <head headTxet="选择人员"></head>
+
+  <view class="search">
+    <view>
+      <image src="../../static/search.png"></image>
+      <input type="text" placeholder="请输入企业信息" bindinput='bindPhone' value="{{likeName}}" placeholder-class="place"/>
+    </view>
+  </view>
+
+  <view class="box">
+      <view class="item" wx:for="{{list}}" wx:for-item='item' wx:key="id" data-item="{{item}}" bindtap="backInfo">
+          <image src="{{item.pic?item.pic:'../../static/people.pic'}}"></image>
+          <view>
+            <view><view>{{item.companyName}}</view> <view></view></view>
+            <view>统一社会信用代码：{{item.socialCredit}}</view>
+          </view>
+      </view>
+  </view>
+
+</view>

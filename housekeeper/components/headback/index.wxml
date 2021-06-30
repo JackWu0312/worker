@@ -1,0 +1,4 @@
+<view class="heads">
+    <image class="image" bindtap="back" src="../../static/back.png"></image>
+    <text class="text">{{headTxet}}</text>
+</view>

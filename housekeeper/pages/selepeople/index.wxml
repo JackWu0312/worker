@@ -1,0 +1,21 @@
+<view class="selepeople">
+  <head headTxet="选择人员"></head>
+
+  <view class="search">
+    <view>
+      <image src="../../static/search.png"></image>
+      <input type="text" placeholder="请输入姓名或手机号" bindinput='bindPhone' value="{{jjrUserLikeName}}" placeholder-class="place"/>
+    </view>
+  </view>
+
+  <view class="box">
+      <view class="item" wx:for="{{list}}" wx:for-item='item' wx:key="id" data-id="{{item.id}}" data-name="{{item.dptm.name}}" data-nickName="{{item.nickName}}" bindtap="backInfo">
+          <image src="{{item.pic?item.pic:'../../static/people.pic'}}"></image>
+          <view>
+            <view><view>{{item.nickName}}</view> <view>{{item.dptm.name}}</view></view>
+            <view>手机号：{{item.phone}}</view>
+          </view>
+      </view>
+  </view>
+
+</view>

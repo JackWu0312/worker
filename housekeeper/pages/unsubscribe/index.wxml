@@ -1,0 +1,75 @@
+<view class="unsubscribe">
+
+  <head headTxet="退订"></head>
+
+
+  <view class="box">
+    <view class="iteminfo">
+      <image src="../../static/people.pic"></image>
+      <view>
+        <view>
+          <view>{{value.zukeName}}</view>
+          <view>{{value.zukePhone}}</view>
+        </view>
+        <view>{{value.zukeSfz}}</view>
+      </view>
+    </view>
+
+    <view class="text"><text>地址：</text><text>{{value.house.quyuCName}}{{value.house.louNo}}号楼{{value.house.men}}单元{{value.house.fangNo}}室{{value.house.fangjianName=='整租'?'整租':value.house.fangjianName}}{{value.house.fangjianName=='整租'?'':'间'}} </text></view>
+    <view class="text"><text>备注：</text><text>{{value.remark}}</text>
+    </view>
+    <view class="text"><text>附件：</text>
+      <!-- <text class="enclosure">查看附件</text> -->
+      <van-uploader file-list="{{ fileList }}"  show-upload="{{false}}" deletable="{{false}}"/>
+    </view>
+
+  </view>
+  <view class="together">
+    <view>退订信息</view>
+    <view></view>
+  </view>
+  <!-- <view class="item">
+    <view><text>退订金额</text></view>
+    <view><input type="text" disabled="{{true}}" value="0" /></view>
+  </view> -->
+  <view class="item">
+    <view><text>退租类型</text><text>*</text></view>
+    <view class="sex">
+      <view class="{{indentType==1?'active':''}}" bindtap="intent" data-type="1">预支</view>
+      <view class="{{indentType==2?'active':''}}" bindtap="intent" data-type="2">实支</view>
+    </view>
+  </view>
+  <view class="item">
+    <view><text>退款金额</text><text>*</text></view>
+    <view><input type="number" placeholder="请填写" bindinput='bindMoney' value="{{ money }}" placeholder-class="place" /><text>元</text></view>
+  </view>
+  <view class="item">
+    <view><text>预计退款日期</text></view>
+    <view class="muban" bindtap="onDisplay" >
+      <view style="color:#000">{{defaultDateFormat}}</view>
+      <image src="../../static/right.png"></image>
+    </view>
+  </view>
+  <!-- <view class="together">
+    <view></view>
+    <view>变更退款金额</view>
+  </view> -->
+
+  <view class="items">
+    <view><text>备注</text></view>
+    <textarea placeholder="请输入描述" bindinput='bindNote' value="{{ note }}" placeholder-class="place"></textarea>
+  </view>
+
+  <view class="items">
+    <view style="margin-bottom:10rpx"><text>凭证</text></view>
+    <van-uploader file-list="{{ imageList }}" bind:delete="deleteImg" bind:after-read="afterRead" />
+  </view>
+
+
+  <view class="btn">
+    <view bindtap="sure">保存</view>
+  </view>
+</view>
+
+<van-calendar show="{{ showdate }}" bind:close="onClosedate" min-date="{{ minDate }}" max-date="{{ maxDate }}"
+  bind:confirm="onConfirmdate" default-date="{{defaultDate}}" />
