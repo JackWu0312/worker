@@ -1,0 +1,87 @@
+/* pages/login/index.wxss */
+.login_layout{
+  display: flex;
+  flex-direction: column;
+}
+.image_layout{
+  text-align: center;
+}
+.image_layout image{
+  width: 545rpx;
+  height: 412rpx;
+}
+.welcome_cn{
+  margin-top: 70rpx;
+  margin-left: 60rpx;
+  width: 406rpx;
+  height: 56rpx;
+  font-size: 58rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #414141;
+  line-height: 56rpx;
+}
+.welcome_en{
+  margin-top: 20rpx;
+  margin-left: 60rpx;
+  width: 324rpx;
+  height: 27rpx;
+  font-size: 27rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #A9A9A9;
+}
+.phone_layout{
+  margin-top: 80rpx;
+  margin-left: 60rpx;
+  width: 630rpx;
+  height: 80rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  border-bottom: 1rpx solid #3CBAF7;
+}
+
+.phone_layout image{
+  width: 34rpx;
+  height: 54rpx;
+  margin-right: 20rpx;
+}
+.code_layout{
+  margin-top: 60rpx;
+  margin-left: 60rpx;
+  width: 630rpx;
+  height: 80rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  border-bottom: 1rpx solid #3CBAF7;
+}
+
+.code_layout image{
+  width: 34rpx;
+  height: 54rpx;
+  margin-right: 20rpx;
+}
+.code_layout input{
+  flex:1;
+}
+.get_code{
+  margin-right: 20rpx;
+  width: 130rpx;
+  height: 28rpx;
+  font-size: 26rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #3CBAF7;
+}
+.login{
+  margin-top: 100rpx;
+  width: 630rpx;
+  height: 90rpx;
+  background: linear-gradient(270deg, #3776FA 0%, #43AAFC 100%);
+  border-radius: 45rpx;
+  color: white;
+}
