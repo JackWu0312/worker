@@ -1,0 +1,16 @@
+<!--pages/worker/index.wxml-->
+<view class="worker_layout">
+  <text class="title_1">选择角色</text>
+  <!-- <text class="title_2">工单数表示待处理数量</text> -->
+  <view class="image_layout">
+    <image class="imageStyle" src="../../static/worker_wx.png" bindtap="wxService"/>
+    <image class="imageStyle" src="../../static/worker_bj.png" bindtap="bjService"/>
+  </view>
+  <!-- <view class="image_layout">
+    <image class="imageStyle" src="../../static/worker_zx.png" bindtap="zxService"/>
+    <image class="imageStyle" src="../../static/worker_ph.png" bindtap="phService"/>
+  </view> -->
+  <!-- <view class="image_layout">
+    <image class="imageStyle" src="../../static/worker_kd.png" bindtap="kdService"/>
+  </view> -->
+</view>

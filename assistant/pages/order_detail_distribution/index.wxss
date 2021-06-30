@@ -1,0 +1,134 @@
+/* pages/order/index.wxss */
+.order_layout {
+  width: 100%;
+  height: 100%;
+  background-color: #F8F8F8;
+  display: flex;
+  flex-direction: column;
+}
+.top_layout{
+  padding: 30rpx 30rpx;
+  background-color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+}
+
+.item_title {
+  width: 100%;
+  height: 80rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.item_title text:nth-child(1) {
+  font-size: 26rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #A9A9A9;
+}
+
+.user_type {
+  position: absolute;
+  right: 30rpx;
+  font-size: 26rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #FFFFFF;
+  background-color: #4791F9;
+}
+
+.line {
+  width: 100%;
+  height: 1rpx;
+  background-color: #E9ECF1;
+}
+
+.appoint_time {
+  margin-top: 40rpx;
+  font-size: 34rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #4791F9;
+}
+
+.normal_text {
+  margin-top: 40rpx;
+  font-size: 30rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #A9A9A9;
+}
+
+.images {
+  margin-top: 40rpx;
+}
+
+.img_style {
+  height: 150rpx;
+  width: 150rpx;
+}
+
+.line2 {
+  margin-top: 30rpx;
+  width: 100%;
+  height: 1rpx;
+  background-color: #E9ECF1;
+}
+
+.item_bottom {
+  margin-top: 380rpx;
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  flex-direction: row;
+}
+
+.icon_img {
+  width: 26rpx;
+  height: 26rpx;
+}
+
+.icon_text1 {
+  display: flex;
+  align-items: center;
+  width: 190rpx;
+  padding-left: 40rpx;
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  height: 90rpx;
+  background: linear-gradient(270deg, #3776FA 0%, #43AAFC 100%);
+  border-radius: 45rpx;
+  color: #FFFFFF;
+}
+
+.icon_text2 {
+  display: flex;
+  align-items: center;
+  width: 190rpx;
+  padding-left: 40rpx;
+  margin-left: 30rpx;
+  font-size: 28rpx;
+  font-family:PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  height: 90rpx;
+  background: linear-gradient(270deg, #FF4674 0%, #FF84A3 100%);
+  border-radius: 45rpx;
+  color: #FFFFFF;
+}
+
+.icon_text3 {
+  margin-left: 30rpx;
+  display: flex;
+  align-items: center;
+  width: 190rpx;
+  padding-left: 40rpx;
+  font-size: 28rpx;
+  height: 90rpx;
+  background: linear-gradient(270deg, #00CA89 0%, #3DDAA2 100%);
+  border-radius: 45rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #FFFFFF;
+}

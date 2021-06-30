@@ -1,14 +1,32 @@
 {
-  "pages":[
+  "pages": [
+    "pages/worker/index",
+    "pages/complete/index",
+    "pages/cancel_clean/index",
+    "pages/order_detail_clean/index",
+    "pages/order_detail_repair/index",
+    "pages/order_detail_renovation/index",
+    "pages/order_detail_distribution/index",
+    "pages/order/index",
+    "pages/order_clean/index",
+    "pages/order_repair/index",
+    "pages/order_renovation/index",
+    "pages/order_distribution/index",
     "pages/login/index",
     "pages/index/index",
+    "pages/history_order_repair/index",
+    "pages/history_order_clean/index",
+    "pages/history_order_renovation/index",
+    "pages/history_order_distribution/index",
+    "pages/mine/index",
     "pages/logs/logs"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "Weixin",
-    "navigationBarTextStyle":"black" 
+    "navigationBarTitleText": "",
+    "navigationBarTextStyle": "black"
   },
+ 
   "sitemapLocation": "sitemap.json"
 }

@@ -14,6 +14,11 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    url: 'http://tzcs.xmlfey.com/',   //测试环境
+    // url:'http://lfpms.cn.utools.club/',//阙老板本地
+  //url: 'https://pms.xmlfey.com/', //正式环境
+    edition:"v1.0.0",
+    gcid:"0592002"
   }
 })

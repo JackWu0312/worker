@@ -1,0 +1,41 @@
+<!--pages/complete/index.wxml-->
+<view class="complete_layout">
+  <view class="space">
+  </view>
+  <view class="input1_layout" bindtap="showPopup">
+    <text>承 担 方 </text>
+    <text> * </text>
+    <text class="chengdanfang">{{chengdanfang}}</text>
+    <view class="arrow"></view>
+  </view>
+  <van-popup show="{{ show }}" bind:close="onClose" position="bottom" custom-style="height: 20%;" closeable round
+    close-icon="close">
+    <view class="popup">
+      <text class="popup_item" bindtap="select_company">公司</text>
+      <text class="popup_item" bindtap="select_tenant">租户</text>
+      <text class="popup_item" bindtap="select_owner">业主</text>
+    </view>
+  </van-popup>
+  <view class="input1_layout">
+    <text>最终费用 </text>
+    <text>* </text>
+    <input type="digit"  bindinput="fee_input" class="fee_input"/>
+  </view>
+  <text class="beizhu">备注</text>
+  <textarea class="remarks" type="text" bindinput="remarks_input" placeholder="请填写（选填）" />
+  <view class="line"></view>
+  <text class="photo">拍照留存</text>
+  <view class="addImv">
+      <!--这个是已经选好的图片-->
+      <view wx:for="{{banner}}" wx:key="key" class="upFile" bindtap="showImageBanner" data-id="{{index}}">
+        <image class="itemImv" src="{{item}}"></image>
+        <image class="closeImv" src="../../static/icon_cancel.png" mode="scaleToFill" catchtap="deleteImvBanner" data-id="{{index}}"></image>
+      </view>
+ 
+      <!--这个是选择图片-->
+      <view class="chooseView" bindtap="chooseBanner"wx:if="{{chooseViewShowBanner}}">
+        <image class="chooseImv" src="../../static/img_add.png"></image>
+      </view>
+  </view>
+  <button class="submit" bindtap="submit">提交</button>
+</view>

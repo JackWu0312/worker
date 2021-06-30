@@ -1,0 +1,5 @@
+<!--pages/cancel_clean/index.wxml-->
+<view class="container" style="min-height:  {{screenHeight}}px">
+  <textarea class="remarks" type="text" bindinput="remarks_input" placeholder="点击输入退单原因"></textarea>
+  <button class="btn" bindtap="submit">提交</button>
+</view>

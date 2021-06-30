@@ -1,0 +1,28 @@
+/* pages/cancel_clean/index.wxss */
+.container {
+  width: 100%;
+  height: 100%;
+  background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.remarks {
+  position: absolute;
+  top: 30rpx;
+  width: 100%;
+  height: 300rpx;
+  padding: 30rpx;
+  background-color: #ffffff;
+  box-sizing: border-box;
+}
+.btn{
+  position: absolute;
+  bottom: 30rpx;
+  width: 630rpx;
+  height: 90rpx;
+  background: linear-gradient(270deg, #3776FA 0%, #43AAFC 100%);
+  border-radius: 45rpx;
+  color: white;
+}

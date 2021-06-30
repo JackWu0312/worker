@@ -1,0 +1,28 @@
+<!--pages/order/index.wxml-->
+<wxs src="../../wxs/util.wxs" module="util" />
+<view class="order_layout" style="min-height:  {{screenHeight}}px">
+  <view class="top_layout">
+    <view class="item_title">
+      <text>工单号：{{workOrder.orderNo}}</text>
+      <text class="user_type">{{workOrder.type===1?'公司':'租户'}}</text>
+    </view>
+    <view class="line"></view>
+    <text class="appoint_time">上门时间：{{workOrder.expectCompletionTime}}</text>
+    <text class="normal_text">上门地址：{{util.houseAddress(workOrder.house)}}</text>
+    <text class="normal_text">备注内容：{{workOrder.repairServiceContent}}</text>
+    <!-- <text class="normal_text">派单来源：{{workOrder.comeSource}}</text>
+    <text class="normal_text">客户姓名：{{workOrder.customer}}</text> -->
+    <view class="images" wx:if="{{workOrder.applyPicList.length>0}}" wx:for="{{workOrder.applyPicList}}"
+      wx:for-item="img_item" data-item="{{img_item}}" wx:key="index">
+      <image class="img_style"  src="{{img_item.big}}" bindtap='previmg' data-picurl="{{img_item.big}}" data-piclist="{{workOrder.applyPicList}}"/>
+    </view>
+  </view>
+  <view class="bottom_layout" hidden="{{isHistory}}">
+    <view class="item_bottom">
+      <button class="icon_text1" data-call='{{workOrder.customerCalls}}' bindtap="call">联系客户</button>
+      <button class="icon_text2" bindtap="cancel" hidden="{{true}}">取消订单</button>
+      <button class="icon_text3" data-id='{{workOrder.id}}' bindtap="complete">服务完成</button>
+    </view>
+  </view>
+
+</view>

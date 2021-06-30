@@ -12,7 +12,7 @@
   <view class="code_layout">
     <image src="../../static/icon_code.png"/>
     <input placeholder="验证码" type="number" maxlength="6" bindinput="codeNum"/>
-    <text class="get_code" bindtap="getCode">获取验证码</text>
+    <text class="get_code" bindtap="getCode">{{codename}}</text>
   </view>
   <button class="login" bindtap="toLogin">登录</button>
 </view>

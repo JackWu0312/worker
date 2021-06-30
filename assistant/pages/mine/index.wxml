@@ -1,0 +1,23 @@
+<!--pages/mine/index.wxml-->
+<view class="mine_layout">
+  <mp-tabbar style="position:fixed;bottom:0;width:100%;left:0;right:0;" list="{{list}}" selected="2" bind:switchTab="tabChange"></mp-tabbar>
+  <view class="user_info">
+    <view class="user_info_left">
+      <text>{{username}}</text>
+      <text>{{phone}}</text>
+    </view>
+    <image src="../../static/avatar_default.png" />
+  </view>
+  <!-- 当前版本 -->
+  <view class="edition_layout" bindtap="edition">
+    <text>当前版本</text>
+    <text>{{editionName}}</text>
+    <image src="../../static/icon_download.png"></image>
+  </view>
+  <view class="line"></view>
+  <!-- 退出登录 -->
+  <view class="exit_layout" bindtap="exit">
+    <text>退出登录</text>
+    <image src="../../static/icon_exit.png"></image>
+  </view>
+</view>

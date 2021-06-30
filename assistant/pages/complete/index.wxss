@@ -1,0 +1,154 @@
+/* pages/complete/index.wxss */
+.complete_layout {
+  display: flex;
+  flex-direction: column;
+  margin-left: 30rpx;
+}
+
+.space {
+  height: 80rpx;
+}
+
+.input1_layout {
+  width: 690rpx;
+  height: 80rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  border-bottom: 1rpx solid #E9ECF1
+}
+
+.arrow {
+  width: 15rpx;
+  height: 15rpx;
+  border-top: 2rpx solid #999;
+  border-right: 2rpx solid #999;
+  position: absolute;
+  right: 30rpx;
+  transform: rotate(45deg);
+  margin-top: 10rpx;
+}
+
+.popup {
+  margin-top: 50rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup_item {
+  height: 60rpx;
+  font-size: 34rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #4791F9;
+}
+
+.input1_layout text:nth-child(1) {
+  font-size: 32rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #666666;
+}
+
+.input1_layout text:nth-child(2) {
+  font-size: 32rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #4791F9;
+  margin-right: 30rpx;
+}
+.chengdanfang {
+  position: absolute;
+  right: 30rpx;
+  font-size: 32rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #333333;
+  margin-right: 30rpx;
+}
+.fee_input{
+  direction: rtl;
+  position: absolute;
+  right: 30rpx;
+}
+
+.beizhu {
+  margin-top: 35rpx;
+  margin-bottom: 35rpx;
+  font-size: 32rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #666666;
+}
+
+.remarks {
+  width: 690rpx;
+  height: 150rpx;
+  align-items: flex-start;
+  display: flex;
+}
+
+.line {
+  width: 690rpx;
+  height: 1rpx;
+  background-color: #E9ECF1;
+}
+
+.photo {
+  margin-top: 40rpx;
+  font-size: 32rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #666666;
+}
+
+.addImv {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 30rpx;
+}
+
+.chooseView {
+  width: 220rpx;
+  height: 180rpx;
+  text-align: center;
+}
+
+.chooseImv {
+  width: 156rpx;
+  height: 156rpx;
+}
+
+.upFile {
+  width: 220rpx;
+  height: 180rpx;
+  position: relative;
+  padding: 0rpx 7rpx;
+}
+
+.itemImv {
+  width: 156rpx;
+  height: 156rpx;
+  padding: 0rpx 7rpx;
+}
+
+.closeImv {
+  position: absolute;
+  right: 25rpx;
+  top: 0rpx;
+  width: 20rpx;
+  height: 20rpx;
+}
+
+.submit {
+  margin-top: 308rpx;
+  width: 630rpx;
+  height: 90rpx;
+  background: linear-gradient(270deg, #3776FA 0%, #43AAFC 100%);
+  border-radius: 45rpx;
+  color: white;
+}

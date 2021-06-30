@@ -1,6 +1,6 @@
 // const host = 'http://192.168.1.51:8089/' 
-const host = 'https://api.zcczk.com/'   
-// const host = 'https://zcczk.cn.utools.club/' 
+const host = 'http://112.74.166.48:82/'   //测试环境
+// const host = 'http://pms.xmlfey.com/' //正式环境
         
 /**        
  * 封封微信的的request 

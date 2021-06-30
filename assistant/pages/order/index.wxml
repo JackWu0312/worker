@@ -1,0 +1,60 @@
+<!--pages/order/index.wxml-->
+<wxs src="../../wxs/util.wxs" module="util" />
+<view class="order_layout">
+  <view class="choice_layout">
+    <!-- 筛选条件 -->
+    <view class="choice_view">
+      <text>程度</text>
+      <image class="image_arrow" src="../../static/arrow_down.png"></image>
+    </view>
+    <view class="choice_view">
+      <text>区域</text>
+      <image class="image_arrow" src="../../static/arrow_down.png"></image>
+    </view>
+    <view class="choice_view">
+      <text>验收</text>
+      <image class="image_arrow" src="../../static/arrow_down.png"></image>
+    </view>
+    <view class="choice_view">
+      <text>筛选</text>
+      <image class="image_arrow" src="../../static/arrow_down.png"></image>
+    </view>
+    <view class="choice_view">
+      <image class="image_sort" src="../../static/icon_sort.png"></image>
+    </view>
+  </view>
+  <view class="contents" style="min-height:  {{screenHeight}}px">
+    <view class="item_style" wx:if="{{list.length>0}}" wx:for="{{list}}" 
+      wx:key="index" data-index="{{index}}" bindtap="detail">
+      <view class="item_title">
+        <text>工单号：{{item.orderNo}}</text>
+        <text class="user_type">{{item.type===1?'公司':'租户'}}</text>
+      </view>
+      <view class="line"></view>
+      <text class="appoint_time">上门时间：{{item.expectCompletionTime}}</text>
+      <text>上门地址：{{util.houseAddress(item.house)}}</text>
+      <text>备注内容：{{item.repairServiceContent}}</text>
+      <text>派单来源：{{item.comeSource==null?'联发尔寓':item.comeSource}}</text>
+      <text>客户姓名：{{item.customer}}</text>
+      <view class="images" wx:if="{{item.applyPicList.length>0}}" wx:for="{{item.applyPicList}}" wx:for-item="img_item"
+        data-item="{{img_item}}" wx:key="index" catchtap="previmg" data-picList="{{item.applyPicList}}">
+        <image class="img_style" src="{{img_item.big}}" />
+      </view>
+      <view class="line2"></view>
+      <view class="item_bottom">
+        <view class="bottom_child">
+          <image class="icon_img" src="../../static/icon_call.png"></image>
+          <text class="icon_text1" data-call='{{item.customerCalls}}' bindtap="call">客户</text>
+        </view>
+        <view class="bottom_child">
+          <image class="icon_img" src="../../static/icon_cancel.png"></image>
+          <text class="icon_text2" data-index="{{index}}" bindtap="cancel">取消</text>
+        </view>
+        <view class="bottom_child">
+          <image class="icon_img" src="../../static/icon_complete.png"></image>
+          <text class="icon_text3" data-id='{{item.id}}' bindtap="complete">完成</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

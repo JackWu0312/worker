@@ -1,0 +1,45 @@
+<!--pages/main/index.wxml-->
+<van-tabbar active="{{ active }}" active-color="#464646" inactive-color="#A9A9A9" bind:change="onChange">
+  <van-tabbar-item >
+    <image
+      slot="icon"
+      src="/static/tab_1_normal.png"
+      mode="aspectFit"
+      style="width: 30rpx; height: 30rpx;"
+    />
+    <image
+      slot="icon-active"
+      src="/static/tab_1_active.png"
+      mode="aspectFit"
+      style="width: 30rpx; height: 30rpx;"
+    />
+    未做工单</van-tabbar-item>
+    <van-tabbar-item >
+    <image
+      slot="icon"
+      src="/static/tab_2_normal.png"
+      mode="aspectFit"
+      style="width: 30rpx; height: 30rpx;"
+    />
+    <image
+      slot="icon-active"
+      src="/static/tab_2_active.png"
+      mode="aspectFit"
+      style="width: 30rpx; height: 30rpx;"
+    />
+    历史工单</van-tabbar-item>
+    <van-tabbar-item >
+    <image
+      slot="icon"
+      src="/static/tab_3_normal.png"
+      mode="aspectFit"
+      style="width: 30rpx; height: 30rpx;"
+    />
+    <image
+      slot="icon-active"
+      src="/static/tab_3_active.png"
+      mode="aspectFit"
+      style="width: 30rpx; height: 30rpx;"
+    />
+    个人中心</van-tabbar-item>
+</van-tabbar>

@@ -1,0 +1,28 @@
+var houseAddress = function (house) {
+  var address = ""
+  if (house != null) {
+    if (house.quyuCName != null) {
+      address = house.quyuCName
+    }
+    if (house.louNo != null) {
+      address += house.louNo + "号楼"
+    }
+    if (house.men != null) {
+      address += house.men + "单元"
+    }
+    if (house.fangNo != null) {
+      address += house.fangNo + "号"
+    }
+    if (house.fangjianName != null) {
+      if ("整租" == house.fangjianName) {
+        address += house.fangjianName
+      } else {
+        address += house.fangjianName + "间"
+      }
+    }
+  }
+  return address
+};
+module.exports = {
+  houseAddress: houseAddress
+}
