@@ -25,14 +25,16 @@ Page({
       that.getFuJianData(1,options.id)
       that.getFuJianData(2,options.id)
       that.getFuJianData(3,options.id)
+      this.setData({
+        nickname: options.nickname, //合租人姓名
+        gender: options.gender, //合租人性别
+        phone: options.phone, //合租人手机号
+        sfzNo: options.sfzNo, //合租人身份证号
+        index: options.index
+      })
     }
     this.setData({
-      tblId: options.id ? options.id : util.getUUID(),
-      nickname: options.nickname, //合租人姓名
-      gender: options.gender ? options.gender : 1, //合租人性别
-      phone: options.phone, //合租人手机号
-      sfzNo: options.sfzNo, //合租人身份证号
-      index: options.index
+      tblId: options.id ? options.id : util.getUUID()
     })
   },
   getFuJianData(type,tblId){

@@ -1,7 +1,7 @@
 {
   "navigationStyle": "custom",
   "navigationBarTextStyle": "white",
-  "usingComponents": {
+  "usingComponents": { 
     "tabbar": "/components/tabbarComponent/tabbar"
   }
 }

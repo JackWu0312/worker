@@ -1,6 +1,6 @@
 // pages/my/index.js
 const app = getApp()
-
+const util = require("../../utils/util.js");
 Page({
 
   /**
@@ -15,12 +15,34 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    app.editTabbar();
+    // app.editTabbar();
     this.setData({
       info: wx.getStorageSync('info')
     })
   },
-
+  layout() {
+    wx.showModal({
+      title: '提示',
+      content: '确定是否退出',
+      success(res) {
+        if (res.confirm) {
+          wx.removeStorage({
+            key: 'info',
+            success: function (res) {
+              util.showToast('退出成功！')
+              setTimeout(() => { 
+                wx.navigateTo({
+                  url: `/pages/login/index`
+                });
+              }, 1000)
+            }
+          })
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

@@ -1,0 +1,16 @@
+<view class="modify">
+
+  <head headTxet="房源"></head>
+  <view class="search">
+      <view>
+        <image src="../../static/search.png"></image>
+        <input type="text" placeholder="请输入房间号" bindinput='bindPhone' value="{{jjrUserLikeName}}"
+          placeholder-class="place" />
+      </view>
+    </view>
+  <view class="box">
+    <view class="item" wx:for="{{list}}" bindtap="backInfo" wx:for-item='item' wx:key="id" data-houseid="{{item.houseId}}" data-fangjianname="{{item.fangjianName}}">
+     {{item.fangjianName}}
+    </view>
+  </view>
+</view>

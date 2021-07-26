@@ -58,27 +58,27 @@
       <view></view>
     </view>
     <view class="managementContent">
-      <view class="managementItem">
+      <view class="managementItem newwith" bindtap="myreserve">
         <image src="../../static/home.png"></image>
         <view>{{house.bookListCount}}</view>
         <view>我的预定</view>
       </view>
-      <view class="managementItem">
+      <view class="managementItem newwith" bindtap="mycontract">
         <image src="../../static/sign.png"></image>
         <view>{{management.myChengzu}}/{{management.myQianyue}}</view>
         <view>我的签约</view>
       </view>
-      <view class="managementItem">
+      <view class="managementItem newwith" bindtap="electronics">
         <image src="../../static/electronics.png"></image>
         <view>{{management.pending}}</view>
         <view>电子签约</view>  
         <image class="hot" src="../../static/hot.png"></image>
       </view>
-      <view class="managementItem"> 
+      <!-- <view class="managementItem"> 
         <image src="../../static/lock.png"></image>
         <view>{{house.hasLockHouseCount}}</view>
         <view>电子门锁</view>
-      </view>
+      </view> -->
     </view>
   </view>
   <view class="management todo">
@@ -90,26 +90,26 @@
       <view></view>
     </view>
     <view class="managementContent">
-      <view class="managementItem">
+      <view class="managementItem newwith" bindtap="clean">
         <image src="../../static/cleaning.png"></image>
         <view>{{renting.cleanPending}}</view>
         <view>保洁</view>
       </view>
-      <view class="managementItem">
+      <view class="managementItem newwith" bindtap="repair">
         <image src="../../static/repair.png"></image>
         <view>{{renting.repairPending}}</view>
         <view>维修</view>
       </view>
-      <view class="managementItem">
+      <view class="managementItem newwith" bindtap="complaint">
         <image src="../../static/complaint.png"></image>
         <view>{{renting.complaintPending}}</view>
         <view>投诉</view>
       </view>
-      <view class="managementItem">
+      <!-- <view class="managementItem">
         <image src="../../static/renovation.png"></image>
         <view>{{renting.decorationPending}}</view>
         <view>装修</view>
-      </view> 
+      </view>  -->
     </view>
   </view>
   <view class="management todo">
@@ -124,13 +124,13 @@
       </view>
     </view>
     <view class="managementContent">
-      <view class="managementItem">
+      <view class="managementItem" bindtap="tenant">
         <image src="../../static/personal.png"></image>
         <view>{{management.jiJiangBanChuCount}}</view>
         <view>个人合同（到期）</view>
         <image class="hot" src="../../static/thirty.png"></image>
       </view>
-      <view class="managementItem">
+      <view class="managementItem" bindtap="enterprise">
         <image src="../../static/enterprise.png"></image>
         <view>{{management.due}}</view>
         <view>企业合同（到期）</view>
@@ -148,4 +148,4 @@
     </view>
   </view>
 </view>
-<tabbar tabbar="{{ tabbar }}"></tabbar>
+<!-- <tabbar tabbar="{{ tabbar }}"></tabbar> -->

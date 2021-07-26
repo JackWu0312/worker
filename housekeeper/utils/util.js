@@ -1,6 +1,6 @@
-// const host = 'http://tzcs.xmlfey.com/'   
-const host = 'http://112.74.166.48:82/'
-const imgHost= 'http://tzcs.xmlfey.com/UploadAllObjectServlet?server=upload&'
+const host = 'https://tzcs.xmlfey.com/'   
+// const host = 'http://112.74.166.48:82/' 
+const imgHost= 'https://tzcs.xmlfey.com/UploadAllObjectServlet?server=upload&'
 
 
 const formatTime = date => {
@@ -33,7 +33,7 @@ function request(url, data = {}, method = "POST") {
         token: wx.getStorageSync('info').token,
         gcid: '0592002',
         params: data
-      },
+      }, 
       method: method,
       // header: {
       //   'Content-Type': 'application/json',
@@ -45,7 +45,6 @@ function request(url, data = {}, method = "POST") {
         } else if(res.data.status.code == 300){
           resolve(res.data);
         } else {
-        
           if (res.data.status.code == 1000) { 
             wx.removeStorage({
               key: 'info',

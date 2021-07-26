@@ -22,7 +22,7 @@ Component({
    */
   methods: {
     back() {
-      wx.navigateBack({
+      wx.navigateBack({ 
         delta: 1
       })
     },

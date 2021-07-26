@@ -1,0 +1,59 @@
+<view class="clean">
+
+  <head headTxet="维修"></head>
+  <view class="tab">
+    <view class="{{tabActive==0?'tabActive':''}}" bindtap="bindTabActive" data-index="0">全部</view>
+    <view class="{{tabActive==1?'tabActive':''}}" bindtap="bindTabActive" data-index="1">待处理</view>
+    <view class="{{tabActive==6?'tabActive':''}}" bindtap="bindTabActive" data-index="6">逾期未处理</view>
+    <view class="{{tabActive==2?'tabActive':''}}" bindtap="bindTabActive" data-index="2">派单中</view>
+    <view class="{{tabActive==3?'tabActive':''}}" bindtap="bindTabActive" data-index="3">待验收</view>
+    <view class="{{tabActive==5?'tabActive':''}}" bindtap="bindTabActive" data-index="5">已验收</view>
+    <view class="{{tabActive==4?'tabActive':''}}" bindtap="bindTabActive" data-index="4">已取消</view>
+  </view>
+  <view class="select" >
+    <view bindtap="onCloseMode" bindtap="people">
+      <view>{{backInfo?backInfo.nickName:'全部员工'}}</view>
+      <image src="../../static/select.png"></image>
+    </view>
+    <view bindtap="onCloseSquare" bindtap="onClose">
+      <view>{{typeText}}</view>
+      <image src="../../static/select.png"></image>
+    </view>
+  </view>
+
+  <view class="list" wx:if="{{list.length>0}}">
+    <view class="tabItem" bindtap="work" wx:for="{{list}}" data-id="{{item.id}}" wx:for-item='item' wx:key="id">
+      <view class="tabItemHead">
+        <view>
+          <view style=" background: #24b0fc;" wx:if="{{item.status == 1}}">待处理</view>
+          <view style=" background: #f5b000;" wx:if="{{item.status == 2}}">派单中</view>
+          <view style=" background: #fc3c3c;" wx:if="{{item.status == 3}}">待验收</view> 
+          <view style=" background: #ccc;" wx:if="{{item.status == 4}}">已取消</view>
+          <view style=" background: #01be6a;" wx:if="{{item.status == 5}}">已验收</view>
+          <view>{{item.customer}} {{item.customerCalls}}</view>
+        </view>
+        <view class="btn" wx:if="{{item.status == 1 ||item.status == 6}}">派单</view>
+        <view class="btn" wx:if="{{item.status ==2}}">改派</view>
+        <view class="btn" wx:if="{{item.status ==3}}">验收</view>
+      </view>
+      <!-- <view class="taninfo" wx:if="{{item.assignStewardBs ==1}}">地址：发盛大发售的发生的发生</view> -->
+      <view class="taninfo">地址：{{item.house.quyuCName}}{{item.house.louNo}}号楼{{item.house.men}}单元{{item.house.fangNo}}室{{item.house.fangjianName}}</view>
+      <view class="taninfo">预约上门时间：{{item.expectCompletionTime}}</view>
+      <view class="taninfo" style="margin-bottom:20rpx"><text style=" background-color: {{item.degree==1?'#ff0000':'#24b0fc'}}">{{item.degree==1?'紧急':'一般'}}</text>  维修原因：{{item.repairServiceContent}}</view>
+    </view>
+  </view>
+  <view class="noData" wx:else>暂无数据！</view>
+
+  <view class="add" bindtap="addclean">
+    <van-icon name="plus" color="#5BDD66" size="20px" />
+    <view>申请维修</view>
+  </view> 
+
+</view>
+
+<van-popup show="{{ show }}" position="bottom" custom-style="height: 500rpx;" bind:close="onClose">
+  <view class="pickers">
+    <van-picker show-toolbar confirm-button-text="确定" cancel-button-text="取消" bind:cancel="onClose"
+      bind:change="onChange" bind:confirm="onConfirm" columns="{{ columns }}" />
+  </view>
+</van-popup>

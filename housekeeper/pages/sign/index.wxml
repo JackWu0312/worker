@@ -148,11 +148,11 @@
         <view><input type="text" placeholder="请填写" value="{{cardTypeZhihang}}" bindinput="bindeCardTypeZhihang"
             placeholder-class="place" /></view>
       </view>
-      <view class="item">
+      <!-- <view class="item">
         <view><text>紧急联系邮箱</text></view>
         <view><input type="text" placeholder="请填写" value="{{urgentEmail}}" bindinput="bindeUrgentEmail"
             placeholder-class="place" /></view>
-      </view>
+      </view> -->
     </view>
     <view class="together" wx:if="{{type==2}}">
       <view>联系人</view>
@@ -244,13 +244,6 @@
         </van-uploader>
       </view>
     </view>
-
-
-
-
-
-
-
     <view class="together">
       <view>同住人信息</view>
       <view bindtap="together">添加同住人</view>
@@ -275,7 +268,7 @@
 
     </view>
     <view class="btn">
-      <view>保存</view>
+      <view bindtap="stepOne">保存</view>
     </view>
 
   </view>
@@ -298,7 +291,7 @@
       </view>
       <view class="item">
         <view><text>合同编号</text></view>
-        <view><input type="text" placeholder="请填写" value="{{no}}" disabled="{{true}}" placeholder-class="place" />
+        <view><input type="text" value="{{no}}" disabled="{{true}}" placeholder-class="place" />
         </view>
       </view>
     </view>
@@ -357,7 +350,7 @@
     </view>
     <view class="item">
       <view><text>{{tiqianType==0?'提前付款天数':'固定付款日期'}} </text><text>*</text></view>
-      <view><input type="text" placeholder="请填写" value="{{tiqianDays}}" bindtap="bindtiqianDays"
+      <view><input type="number" placeholder="请填写" value="{{tiqianDays}}" bindinput="bindtiqianDays"
           placeholder-class="place" /><text>{{tiqianType==0?'天':'号'}}</text></view>
     </view>
 
@@ -373,7 +366,7 @@
     <view class="box">
       <view class="items">
         <view><text>补充说明</text></view>
-        <textarea placeholder="请输入补充说明" value="{{buchongRemark}}" bindtap="bindbuchongRemark"
+        <textarea placeholder="请输入补充说明" value="{{buchongRemark}}" bindinput="bindbuchongRemark"
           placeholder-class="place"></textarea>
       </view>
       <view class="items">
@@ -387,7 +380,7 @@
       <view bindtap="addcost">添加费用</view>
     </view>
     <view class="list">
-      <view class="listItem" wx:for="{{otherFeeData}}" wx:for-item='item' wx:key="{{id}}" bindtap="addcost"
+      <view class="listItem" wx:for="{{otherFeeData}}" wx:for-item='item' wx:key="id" bindtap="addcost"
       wx:for-index="index" data-item="{{item}}" data-index="{{index}}" >
         <image src="../../static/money.png"></image>  
         <view class="iteminfo">
@@ -427,12 +420,12 @@
     <view class="people" bindtap="modify" wx:for-index="index" data-type="1" data-index="{{index}}" data-item="{{item}}"
       wx:for="{{list}}" wx:for-item='item' wx:key="id" data-id="{{item.userid}}">
       <image src="../../static/people.pic"></image>
-      <view>{{item.t_fzr_position}}：{{item.t_fzr_name}}</view>
+      <view>{{item.t_fzr_position||(item.type==0?'业务员':item.type==1?'文秘':item.type==2?'呼叫中心文秘':'管家')}}：{{item.t_fzr_name||item.userName}}</view>
       <image src="../../static/right.png"></image>
     </view>
 
     <view class="btn">
-      <view>保存</view>
+      <view class="btnStep" bindtap="laststep" data-type="1">上一步</view>   <view class="btnStep" bindtap="stepTwo">下一步</view>
     </view>
 
   </view>
@@ -459,7 +452,7 @@
           data-type="" data-typeid="4"  data-jiaoge="1"/>
     </view>
     <view class="btn">
-      <view bindtap="save">创建合同</view>
+      <view class="btnStep" bindtap="laststep" data-type="2">上一步</view>   <view class="btnStep" bindtap="save">创建合同</view>
     </view>
   </view>
 </view>

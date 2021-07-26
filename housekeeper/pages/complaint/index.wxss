@@ -1,0 +1,161 @@
+
+.clean{
+  background-color: #F8F8F8;
+  min-height: 100%;
+}
+.tab {
+  width: 750rpx;
+  height: 70rpx;
+  background: linear-gradient(270deg, #3BCC8A 0%, #5BDD66 100%);
+  display: flex;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  top: 128rpx;
+  z-index: 2;
+}
+
+.tab view {
+  margin-left: 25rpx;
+  font-size: 27rpx;
+  height: 66rpx;
+  line-height: 66rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #8AEEB3;
+}
+
+.tabActive {
+  color: #fff !important;
+  border-bottom: 2rpx solid #fff;
+}
+
+.select {
+  width: 750rpx;
+  height: 70rpx;
+  background: #FFFFFF;
+  display: flex;
+  position: fixed;
+  top: 196rpx;
+  left: 0;
+}
+
+.select>view {
+  width: 375rpx;
+  height: 70rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.select>view>view {
+  font-size: 27rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #585858;
+}
+
+.select>view>image {
+  width: 18rpx;
+  height: 8rpx;
+  margin-left: 7rpx;
+}
+
+
+.tabItem {
+  width: 750rpx;
+  background-color: #fff;
+  box-sizing: border-box;
+  padding: 20rpx 30rpx 30rpx 30rpx;
+  margin-bottom: 20rpx;
+}
+
+.tabItemHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tabItemHead>view:nth-child(1) {
+  display: flex;
+  align-items: center;
+}
+
+.tabItemHead>view:nth-child(1)>view:nth-child(1) {
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #FFFFFF;
+  text-align: center;
+  height: 40rpx;
+ 
+  line-height: 40rpx;
+  padding: 0 8rpx;
+  border-radius: 8rpx;
+  margin-right: 20rpx;
+}
+
+.tabItemHead image {
+  width: 42rpx;
+  height: 42rpx;
+}
+
+.taninfo {
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #A9A9A9;
+  margin-top: 26rpx;
+}
+
+.btn{
+  font-size: 30rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #fff;
+  width: 90rpx;
+  text-align: center;
+  height: 50rpx;
+  line-height: 50rpx;
+  border-radius: 10rpx;
+  background-color: #5BDD66;
+}
+
+.list{
+  padding-top: 280rpx;
+}
+
+.add{
+  position: fixed;
+  bottom: 30rpx;
+  padding: 12rpx 30rpx;
+  border-radius: 20rpx;
+  text-align: center;
+  left: 275rpx;
+  background-color: #fff;
+  border: 1rpx solid #5BDD66;
+}
+.add >view{
+  font-size: 20rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+}
+
+.noData{
+  font-size: 30rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #000000;
+  text-align: center;
+  padding-top: 400rpx;
+}
+
+.taninfo text{
+  padding: 2rpx 15rpx;
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  border-radius: 4rpx;
+  color: #fff;
+ 
+}

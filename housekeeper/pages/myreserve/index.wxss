@@ -1,0 +1,70 @@
+.myreseve{
+  background-color: #F8F8F8;
+  height: 100%;
+}
+
+.box{
+  padding-top: 138rpx;
+}
+
+.item{
+  margin-bottom: 20rpx;
+  background-color: #fff;
+}
+.itemTop{
+  display: flex;
+  padding: 30rpx;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #000000;
+}
+.itemTop text {
+  margin-right: 60rpx;
+}
+.itemTop view:nth-child(2){
+  margin-top: 10rpx;
+}
+.itemTop image {
+  width: 30rpx;
+  height: 50rpx;
+}
+.itemBottom{
+  padding: 0rpx 30rpx 20rpx 30rpx;
+  display: flex;
+}
+.itemBottom image {
+  width: 200rpx;
+  height: 140rpx;
+}
+.itemBottom >view:nth-child(2){
+  flex: 1;
+  margin-left: 20rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.itemBottom >view:nth-child(2)>view:nth-child(1){
+font-size: 32rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #000000;
+}
+.itemBottom >view:nth-child(2)>view:nth-child(2){
+  display: flex;
+  justify-content: space-between;
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #958e8e;
+}
+.itemBottom >view:nth-child(2)>view:nth-child(3){
+  display: flex;
+  justify-content: space-between;
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #000000;
+}

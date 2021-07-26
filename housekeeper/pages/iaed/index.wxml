@@ -1,0 +1,27 @@
+<view class="refund">
+
+  <head headTxet="收支明细"></head>
+
+  <view class="list">
+    <view class="listItem" bindtap="revenue"  wx:for="{{list}}" wx:for-item='item' wx:key="feiYongTypeId" bindtap="revenue"
+      wx:for-index="index" data-item="{{item}}" data-index="{{index}}">
+      <image src="../../static/money.png"></image>
+      <view class="iteminfo">
+        <view>
+          <view style="padding:0 5rpx;margin-right: 20rpx;background-color:{{item.type==1?'#33aaf5':'red'}}" >
+          {{item.type==1?'收入':'支出'}}
+            </view>
+          <view>
+            {{item.key}}：{{item.bqMonthMoney}}元
+          </view>
+        </view>
+        <view>费用周期：{{item.bqBeginDate}} - {{item.bqEndDate}}</view>
+        <view>描述：{{item.feiYongDesc}}</view> 
+      </view>
+      <image src="../../static/right.png"></image>
+    </view>
+  </view>
+  <view class="btn">
+    <view bindtap="save">保存</view>
+  </view>
+</view>

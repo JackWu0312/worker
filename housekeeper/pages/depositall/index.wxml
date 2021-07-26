@@ -1,0 +1,22 @@
+<view class="modify">
+
+  <head headTxet="房源"></head>
+  <view class="search">
+    <view>
+      <image src="../../static/search.png"></image>
+      <input type="text" placeholder="请输入小区名、门牌号、房源 编号" bindinput='bindPhone' value="{{jjrUserLikeName}}"
+        placeholder-class="place" />
+    </view>
+  </view>
+  <view class="box">
+    <view class="item" wx:for="{{list}}" bindtap="backInfo" wx:for-item='item' wx:key="id"
+      data-item="{{item}}">
+      {{item.quyuCName}}{{item.louNo}}号楼{{item.men}}单元{{item.fangNo}}室-{{item.fangjianName}}
+    </view>
+  </view>
+  <view class="button" wx:if="{{list.length>0}}">
+    <view bindtap="before" wx:if="{{nextPage!=1}}">上一页</view>
+    <view bindtap="next" wx:if="{{list.length==9}}">下一页</view>
+  </view>
+
+</view> 

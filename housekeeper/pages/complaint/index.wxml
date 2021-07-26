@@ -1,0 +1,61 @@
+<view class="clean">
+
+  <head headTxet="投诉"></head>
+  <view class="tab">
+    <view class="{{tabActive==0?'tabActive':''}}" bindtap="bindTabActive" data-index="">全部</view>
+    <view class="{{tabActive==1?'tabActive':''}}" bindtap="bindTabActive" data-index="1">待处理</view>
+    <view class="{{tabActive==2?'tabActive':''}}" bindtap="bindTabActive" data-index="2">已指派</view>
+    <view class="{{tabActive==3?'tabActive':''}}" bindtap="bindTabActive" data-index="3">待验收</view>
+    <view class="{{tabActive==5?'tabActive':''}}" bindtap="bindTabActive" data-index="5">已验收</view>
+  </view>
+  <view class="select">
+    <view bindtap="onCloseMode" bindtap="people">
+      <view>{{backInfo?backInfo.nickName:'全部员工'}}</view>
+      <image src="../../static/select.png"></image>
+    </view>
+    <view bindtap="onCloseSquare" bindtap="onClose">
+      <view>{{typeText}}</view>
+      <image src="../../static/select.png"></image>
+    </view>
+  </view>
+
+  <view class="list" wx:if="{{list.length>0}}">
+    <view class="tabItem" bindtap="work" wx:for="{{list}}" data-id="{{item.id}}" wx:for-item='item' wx:key="id">
+      <view class="tabItemHead">
+        <view>
+          <view style=" background: #24b0fc;" wx:if="{{item.status == 1}}">待处理</view>
+          <view style=" background: #f5b000;" wx:if="{{item.status == 2}}">已指派</view>
+          <view style=" background: #fc3c3c;" wx:if="{{item.status == 3}}">待验收</view>
+          <view style=" background: #01be6a;" wx:if="{{item.status == 5}}">已验收</view>
+          <view>{{item.customer}} {{item.customerCalls}}</view>
+        </view>
+
+        <view class="btn" wx:if="{{item.status == 1 }}">指派</view>
+        <view class="btn" wx:if="{{item.status ==2}}">完成</view>
+        <view class="btn" wx:if="{{item.status ==3}}">核验</view>
+      </view>
+      <!-- <view class="taninfo" wx:if="{{item.assignStewardBs ==1}}">地址：发盛大发售的发生的发生</view> -->
+      <view class="taninfo">
+        地址：{{item.house.quyuCName}}{{item.house.louNo}}号楼{{item.house.men}}单元{{item.house.fangNo}}室{{item.house.fangjianName}}
+      </view>
+      <view class="taninfo">申请时间：{{item.ct}}</view>
+      <view class="taninfo" style="margin-bottom:20rpx"><text
+          style=" background-color: {{item.degree==1?'#ff0000':'#24b0fc'}}">{{item.degree==1?'紧急':'一般'}}</text>
+          用户反馈：{{item.repairServiceContent}}</view>
+    </view>
+  </view>
+  <view class="noData" wx:else>暂无数据！</view>
+
+  <view class="add" bindtap="addclean">
+    <van-icon name="plus" color="#5BDD66" size="20px" />
+    <view>申请投诉</view>
+  </view>
+
+</view>
+
+<van-popup show="{{ show }}" position="bottom" custom-style="height: 500rpx;" bind:close="onClose">
+  <view class="pickers">
+    <van-picker show-toolbar confirm-button-text="确定" cancel-button-text="取消" bind:cancel="onClose"
+      bind:change="onChange" bind:confirm="onConfirm" columns="{{ columns }}" />
+  </view>
+</van-popup>

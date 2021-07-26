@@ -88,13 +88,14 @@ Page({
       url: `/pages/reserve/index?address=${str}&id=${item.id}&shoudingStatus=${shoudingStatus}`
     });
   },
-  sign() { //新签
+  sign(e) { //新签
     // hetongType   1 为新签    2 为续签  
+    var hetongType =  e.currentTarget.dataset.type
     var item = this.data.value
-    // console.log(item)
+    var hetongId = item.hetongId || item.chengZuId
     var str = `${item.quyuCName}${item.louNo}号楼${item.men}单元${item.fangNo}室${item.fangjianName=='整租'?'整租':item.fangjianName}${item.fangjianName=='整租'?'':'间'}`
     wx.navigateTo({
-      url: `/pages/sign/index?hetongType==1&address=${str}&houseId=${item.id}&parentId=${item.parentId}&zujin=${item.zujin}&zuJinMin=${item.dijia}`
+      url: `/pages/sign/index?hetongType=${hetongType}&address=${str}&houseId=${item.id}&parentId=${item.parentId}&zujin=${item.zujin}&zuJinMin=${item.dijia}&hetongId=${hetongId}`
     });
   },
   unsubscribe() {

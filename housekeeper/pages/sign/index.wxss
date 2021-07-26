@@ -345,6 +345,7 @@
   padding: 0 30rpx;
   display: flex;
   align-items: center;
+  justify-content: space-around;
 }
 
 .btn view {
@@ -359,7 +360,18 @@
   color: #FFFFFF;
   background: linear-gradient(270deg, #3BCC8A 0%, #5BDD66 100%);
 }
-
+.btnStep{
+  width: 300rpx;
+  height: 90rpx;
+  border-radius: 45rpx;
+  line-height: 90rpx;
+  text-align: center;
+  font-size: 30rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #FFFFFF;
+  background: linear-gradient(270deg, #3BCC8A 0%, #5BDD66 100%);
+}
 .time {
   display: flex;
   justify-content: space-between;

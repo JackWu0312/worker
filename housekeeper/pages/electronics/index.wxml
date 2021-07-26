@@ -1,0 +1,49 @@
+<view class="electronics">
+
+  <head headTxet="电子合同"></head>
+
+  <view class="tab">
+    <!-- <view class="{{tabActive==6?'tabActive':''}}" bindtap="bindTabActive" data-index="6">待确认</view> -->
+    <view class="{{tabActive==7?'tabActive':''}}" bindtap="bindTabActive" data-index="7">待生效</view>
+    <view class="{{tabActive==8?'tabActive':''}}" bindtap="bindTabActive" data-index="8">已生效</view>
+    <view class="{{tabActive==9?'tabActive':''}}" bindtap="bindTabActive" data-index="9">已作废</view>
+  </view>
+
+<!--  -->
+  <view class="list"  wx:if="{{list.length>0}}" >
+    <view class="item" wx:for="{{list}}" wx:for-item='item' wx:key="id">
+      <view class="itemtit">{{item.house.quyuCName}}{{item.house.louNo}}号楼{{item.house.men}}单元{{item.house.fangNo}}室{{item.house.fangjianName=='整租'?'整租':item.house.fangjianName}}{{item.house.fangjianName=='整租'?'':'间'}}</view>
+      <view class="info">
+        <view>{{item.zukeName}}   {{item.zukePhone}}</view>
+        <view wx:if="{{tabActive==7}}">{{item.signingStatus==1?'未签字':'已签字'}}</view>
+      </view>
+      <view class="text">{{item.startTime}} - {{item.endTime}}</view>
+      <view  class="text"><text>{{item.jiage}}元/月</text><text>{{item.zhifuType.key}}</text><text></text></view>
+      <view class="itembtn" wx:if="{{tabActive==7}}">
+        <view bindtap="tovoid"  data-id="{{item.id}}" ><image src="../../static/contact.png"></image><view>作废</view></view>
+        <view bindtap="call"  data-phone="{{item.zukePhone}}" ><image src="../../static/contact.png"></image><view>联系客户</view></view>
+        <view data-id="{{item.id}}"  bindtap="contractdetail"><image src="../../static/more.png"></image><view>更多</view></view>
+      </view>
+      <view class="itembtn" wx:if="{{tabActive==8}}">
+        <view bindtap="call"  data-phone="{{item.zukePhone}}"><image src="../../static/contact.png"></image><view>联系客户</view></view>
+        <view data-id="{{item.id}}"  bindtap="contractdetail"><image src="../../static/more.png"></image><view>更多</view></view>
+      </view>
+      <view class="itembtn" wx:if="{{tabActive==9}}">
+        <view data-id="{{item.id}}"  bindtap="cancel"><image src="../../static/more.png"></image><view>删除</view></view>
+        <view data-id="{{item.id}}"  bindtap="contractdetail"><image src="../../static/more.png"></image><view>更多</view></view>
+      </view>
+    </view>
+
+
+
+
+
+  </view>
+  <view class="noData" wx:else>暂无数据！</view>
+
+
+
+
+</view>
+
+<van-dialog id="van-dialog" />

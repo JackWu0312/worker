@@ -1,0 +1,96 @@
+.refund {
+  background-color: #F8F8F8;
+  height: 100%;
+}
+
+
+.list {
+  background-color: #fff;
+  padding-top: 138rpx;
+}
+
+.listItem {
+  display: flex;
+  padding: 20rpx 30rpx;
+  align-items: center;
+  position: relative;
+  border-bottom: 1rpx solid #F8F8F8;
+}
+
+.listItem>image:nth-child(1) {
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.listItem>image:nth-child(3) {
+  width: 22rpx;
+  height: 22rpx;
+}
+
+.iteminfo {
+  flex: 1;
+  margin: 0 20rpx;
+  font-size: 26rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+}
+
+.iteminfo>view:nth-child(1) {
+  display: flex;
+  align-items: center;
+
+}
+
+.iteminfo>view:nth-child(1)>view:nth-child(1) {
+  /* background-color: red; */
+  color: #fff;
+  font-size: 22rpx;
+
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  border-radius: 4rpx;
+  line-height: 30rpx;
+  height: 30rpx;
+}
+
+.iteminfo>view:nth-child(1)>view:nth-child(2) {
+
+  color: #000000;
+}
+
+.iteminfo>view:nth-child(2),
+.iteminfo>view:nth-child(3) {
+  color: #A9A9A9;
+  margin-top: 8rpx;
+}
+
+.listItem>image:nth-child(4) {
+  width: 80rpx;
+  height: 80rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.btn {
+  width: 750rpx;
+  height: 150rpx;
+  background-color: #F8F8F8;
+  box-sizing: border-box;
+  padding: 0 30rpx;
+  display: flex;
+  align-items: center;
+}
+
+.btn view {
+  width: 100%;
+  height: 90rpx;
+  border-radius: 45rpx;
+  line-height: 90rpx;
+  text-align: center;
+  font-size: 30rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #FFFFFF;
+  background: linear-gradient(270deg, #3BCC8A 0%, #5BDD66 100%);
+}

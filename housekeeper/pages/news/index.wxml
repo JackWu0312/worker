@@ -1,7 +1,7 @@
 <view class="room">
   <view class="head">
     <view class="roomhead">
-      <image src="../../static/back.png"></image>
+      <!-- <image src="../../static/back.png"></image> -->
       <view>房态</view>
     </view>
     <view class="tab">
@@ -54,7 +54,7 @@
 </view>
 
 
-<tabbar tabbar="{{ tabbar }}"></tabbar>
+<!-- <tabbar tabbar="{{ tabbar }}"></tabbar> -->
 
 
 <van-popup show="{{ show }}" position="bottom" custom-style="height: 500rpx;" bind:close="onClose">

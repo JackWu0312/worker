@@ -1,0 +1,27 @@
+<view class="electronics">
+
+<head headTxet="我的租客"></head>
+
+<view class="tab">
+  <view class="{{tabActive==9?'tabActive':''}}" bindtap="bindTabActive" data-index="9">全部</view>
+  <view class="{{tabActive==3?'tabActive':''}}" bindtap="bindTabActive" data-index="3">30天内到期</view>
+  <view class="{{tabActive==1?'tabActive':''}}" bindtap="bindTabActive" data-index="1">30天内搬入</view>
+</view>
+<view class="list"   wx:if="{{list.length>0}}" >
+  <view class="item" wx:for="{{list}}" wx:for-item='item' wx:key="id" data-id="{{item.id}}"  bindtap="contractdetail">
+   
+    <view class="info">
+      <view class="itemtit">{{item.zukeName}}   {{item.zukePhone}}<text style="color:{{item.childreStatus==1?'#30b6ff':item.childreStatus==2?'#ff4840':item.childreStatus==3?'#ff4840':''}}" > {{item.childreStatus==1?'即将搬入':item.childreStatus==2?'即将到期':item.childreStatus==3?'已逾期':''}}</text></view>
+      <view bindtap="call"  data-phone="{{item.zukePhone}}"><image src="../../static/phone.png"></image></view>
+    </view>
+    <view class="bgck">
+      <view  class="tips" style="background-color:{{item.childreStatus==1?'#30b6ff':item.childreStatus==2?'#ff4840':item.childreStatus==3?'#ff4840':''}}" wx:if="{{item.childreStatus==1||item.childreStatus==2||item.childreStatus==3}}"> {{item.childreStatus==1?'即将搬入':item.childreStatus==2?'即将到期':item.childreStatus==3?'已逾期':''}}{{item.childreStatusDiffDays}}天</view> 
+      <view >{{item.startTime}} - {{item.endTime}}</view>
+    </view>
+  
+    <view  class="text"><text>{{item.house.quyuCName}}{{item.house.louNo}}号楼{{item.house.men}}单元{{item.house.fangNo}}室{{item.house.fangjianName=='整租'?'整租':item.house.fangjianName}}{{item.house.fangjianName=='整租'?'':'间'}}</text><text>{{item.jiage}}元/月</text> </view>
+  
+  </view>
+</view>
+<view class="noData" wx:else>暂无数据！</view>
+</view>

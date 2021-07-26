@@ -62,11 +62,11 @@
       <image src="../../static/reserve.png"></image>
       <view>预定</view>
     </view>
-    <view class="botmItem"  bindtap="sign" d wx:if="{{value.status==20||value.status==30||value.status==10||value.status==11||(value.status==40&&value.houseStatus==1&&value.shoudingStatus==1)}}">
+    <view class="botmItem" data-type="1" bindtap="sign" d wx:if="{{value.status==20||value.status==30||value.status==10||value.status==11||(value.status==40&&value.houseStatus==1&&value.shoudingStatus==1)}}">
       <image src="../../static/contract.png"></image>
       <view>签约</view>
     </view>
-    <view class="botmItem" wx:if="{{value.status==40}}">
+    <view class="botmItem"  data-type="2"  bindtap="sign" wx:if="{{value.status==40}}">
       <image src="../../static/contract.png"></image>
       <view>续签</view>
     </view>

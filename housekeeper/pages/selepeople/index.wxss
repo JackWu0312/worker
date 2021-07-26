@@ -86,3 +86,14 @@
   font-weight: 400;
   color: #111F37;
 }
+
+.all{
+  font-size: 30rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  background-color: #5BDD66;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #fff;
+}

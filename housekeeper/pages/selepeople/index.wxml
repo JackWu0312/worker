@@ -9,7 +9,8 @@
   </view>
 
   <view class="box">
-      <view class="item" wx:for="{{list}}" wx:for-item='item' wx:key="id" data-id="{{item.id}}" data-name="{{item.dptm.name}}" data-nickName="{{item.nickName}}" bindtap="backInfo">
+  <view wx:if="{{type==1}}" class="all" bindtap="all">全部</view>
+      <view class="item" wx:for="{{list}}" wx:for-item='item' wx:key="id" data-id="{{item.id}}" data-name="{{item.dptm.name}}"  data-dptmid="{{item.dptm.id}}" data-nickName="{{item.nickName}}" bindtap="backInfo">
           <image src="{{item.pic?item.pic:'../../static/people.pic'}}"></image>
           <view>
             <view><view>{{item.nickName}}</view> <view>{{item.dptm.name}}</view></view>

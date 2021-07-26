@@ -1,0 +1,29 @@
+<view class="mycontract">
+  <head headTxet="我的签约"></head>
+  <view class="tab">
+    <view class="{{tabActive==0?'tabActive':''}}" bindtap="bindTabActive" data-index="0">全部</view>
+    <view class="{{tabActive==1?'tabActive':''}}" bindtap="bindTabActive" data-index="1">新签</view>
+    <view class="{{tabActive==2?'tabActive':''}}" bindtap="bindTabActive" data-index="2">续签</view>
+    <view class="{{tabActive==3?'tabActive':''}}" bindtap="bindTabActive" data-index="3">退租</view>
+    <view class="{{tabActive==4?'tabActive':''}}" bindtap="bindTabActive" data-index="4">违约</view>
+  </view>
+  <view class="list"  wx:if="{{list.length>0}}" >
+    <view class="item" wx:for="{{list}}" wx:for-item='item' wx:key="id">
+      <image src="{{item.chengjiaoType.key=='新签'?'../../static/newsign.png':item.chengjiaoType.key=='续签'?'../../static/renewal.png':''}}"></image>
+      <view class="itemtit">{{item.house.quyuCName}}{{item.house.louNo}}号楼{{item.house.men}}单元{{item.house.fangNo}}室{{item.house.fangjianName=='整租'?'整租':item.house.fangjianName}}{{item.house.fangjianName=='整租'?'':'间'}}</view>
+      <view class="info">
+        <view style="background-color:{{isWorkflowOpened==1?(item.contractAuditStatus==2?'#31C27C':(item.contractAuditStatus==0||item.contractAuditStatus==1)?'#3399CC':item.contractAuditStatus==3?'#ff3a34':''):''}}"> {{isWorkflowOpened==1?(item.contractAuditStatus==2?'已审核':(item.contractAuditStatus==0||item.contractAuditStatus==1)?'待审核':item.contractAuditStatus==3?'已驳回':''):''}}</view> 
+     
+        <view>{{item.zukeName}}   {{item.zukePhone}}</view>
+        <view>{{(item.status==0||item.status==17)?'租期中':(item.status==1||item.status==16)?'已退租':item.status==13?'已违约':item.status==21?'已作废':item.status==20?item.signingStatus==1?'未签字':'已签字':''}} </view>
+      </view>
+      <view class="text">{{item.startTime}} - {{item.endTime}}</view>
+      <view  class="text"><text>{{item.jiage}}元/月</text><text>{{item.zhifuType.key}}</text><text>{{item.isElectron==2?'纸质合同':'电子合同'}}</text></view>
+      <view class="itembtn">
+        <view bindtap="call"  data-phone="{{item.zukePhone}}"><image src="../../static/contact.png"></image><view>联系客户</view></view>
+        <view data-id="{{item.id}}" wx:if="{{isWorkflowOpened==1||(isWorkflowOpened!=1&&(item.status==0||item.status==17))}}" bindtap="contractdetail"><image src="../../static/more.png"></image><view>更多</view></view>
+      </view>
+    </view>
+  </view>
+  <view class="noData" wx:else>暂无数据！</view>
+</view>  

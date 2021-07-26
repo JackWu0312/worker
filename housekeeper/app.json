@@ -1,5 +1,6 @@
 {
   "pages":[
+   
     "pages/login/index",
     "pages/home/index",
     "pages/resources/index",
@@ -10,7 +11,7 @@
     "pages/selepeople/index",
     "pages/modify/index",
     "pages/reserve/index" ,
-    "pages/sign/index",
+    "pages/sign/index", 
     "pages/together/index",
     "pages/unsubscribe/index",
     "pages/refund/index",
@@ -20,8 +21,25 @@
     "pages/seleenterprise/index",
     "pages/addcost/index",
     "pages/configure/index",
-    "pages/webview/index"
-    
+    "pages/iaed/index",
+    "pages/ieaddetail/index",
+    "pages/deposit/index", 
+    "pages/clean/index", 
+    "pages/addclean/index", 
+    "pages/depositall/index", 
+    "pages/work/index", 
+    "pages/repair/index", 
+    "pages/workrepair/index", 
+    "pages/addrepair/index", 
+    "pages/complaint/index",  
+    "pages/workcomplaint/index", 
+    "pages/addcomplaint/index", 
+    "pages/myreserve/index", 
+    "pages/mycontract/index", 
+    "pages/electronics/index", 
+    "pages/tenant/index", 
+    "pages/enterprise/index", 
+    "pages/webview/index"   
    
   ],
   "window":{
@@ -31,7 +49,10 @@
     "navigationBarTextStyle":"black"
   },
   "tabBar": {
-    "custom": true,
+    "backgroundColor": "#fafafa",
+    "borderStyle": "white",
+    "selectedColor": "#111F37",
+    "color": "#9398A5",
     "list": [ 
       {
         "pagePath": "pages/home/index",

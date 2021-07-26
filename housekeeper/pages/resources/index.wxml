@@ -5,88 +5,102 @@
   </view>
   <view class="tops" wx:if="{{active==1}}">
     <view class="select">
-      <view>
-        <view>租赁类型</view>
+      <view bindtap="onCloseMode">
+        <view>{{demandType?demandType:'租赁类型'}}</view>
         <image src="../../static/select.png"></image>
       </view>
-      <view>
-        <view>租赁方</view>
+      <view bindtap="onCloseSquare">
+        <view>{{typeType?typeType:'租赁方'}}</view>
         <image src="../../static/select.png"></image>
       </view>
     </view>
-    <view class="item">
-      <view>刘洋  1321111111</view>
-      <view>预定时间：2021.04.12 00:00</view>
-      <view>企业名称：</view>
-      <view>备注信息：</view>
-      <image src="../../static/phone.png"></image>
+    <view wx:if="{{pool.length>0}}">
+      <view class="item" wx:for="{{pool}}" wx:for-item='item' wx:key="id">
+        <view>{{item.name}} {{item.phone}}</view>
+        <view>创建时间：{{item.ct}}</view>
+        <view>企业名称：{{item.companyName}}</view>  
+        <view>备注信息：{{item.remarkDot}}</view>
+        <image src="../../static/phone.png" bindtap='call' data-phone="{{item.phone}}"></image>
+      </view>
     </view>
+    <view class="noData" wx:else>没有客户预约信息!</view>
   </view>
+
+
   <view class="tops" wx:else>
     <view class="tab">
-      <view  class="{{tabActive==1?'tabActive':''}}" bindtap="bindTabActive" data-index="1" >全部</view>
-      <view class="{{tabActive==2?'tabActive':''}}" bindtap="bindTabActive" data-index="2" >预定中</view>
-      <view class="{{tabActive==3?'tabActive':''}}" bindtap="bindTabActive" data-index="3" >预定逾期</view>
-      <view class="{{tabActive==4?'tabActive':''}}" bindtap="bindTabActive" data-index="4" >已退订</view>
-      <view class="{{tabActive==5?'tabActive':''}}" bindtap="bindTabActive" data-index="5" >已签约</view>
+      <view class="{{tabActive=='5'?'tabActive':''}}" bindtap="bindTabActive" data-index="5">全部</view>
+      <view class="{{tabActive==1?'tabActive':''}}" bindtap="bindTabActive" data-index="1">预定中</view>
+      <view class="{{tabActive==0?'tabActive':''}}" bindtap="bindTabActive" data-index="0">预定逾期</view>
+      <view class="{{tabActive==3?'tabActive':''}}" bindtap="bindTabActive" data-index="3">已退定</view>
+      <view class="{{tabActive==2?'tabActive':''}}" bindtap="bindTabActive" data-index="2">已签约</view>
     </view>
 
-    <view class="tabItem">
+    <view wx:if="{{list.length>0}}">
+      <view class="tabItem" wx:for="{{list}}" wx:for-item='item' wx:key="id">
         <view class="tabItemHead">
           <view>
-            <view>预定中</view>
-            <view>刘洋  1321111111</view>
+            <view wx:if="{{item.isSign==1 }}" style=" background: #01BE6A;">已签约</view>
+            <view wx:if="{{item.isUnsubscribe==1}}" style=" background: #F5B000;">已退定</view>
+            <view wx:if="{{item.isYudingFlag==1}}" style=" background: #24B0FC;">预定中</view>
+            <view wx:if="{{item.isYudingFlag==2}}" style=" background: #FC4848;">预定逾期</view>
+            <view>{{item.zukeName}} {{item.zukePhone}}</view>
           </view>
-            <image src="../../static/phone.png"></image>
+          <image src="../../static/phone.png" bindtap='call' data-phone="{{item.zukePhone}}"></image>
         </view>
-        <view class="taninfo">预定时间：2021.04.12 00:00</view>
-        <view class="taninfo">房间：联发·尔寓19号楼-1单元-4026室</view>
-        <view class="taninfo">付款方式：微信</view>
-        <view class="taninfo">失效时间：2021-04-22 10：21</view>
-        <view class="tabBtnBox">
-            <view>签约</view>
-            <view>取消预定</view>
+        <view class="taninfo">预定时间：{{item.acceptDate}}</view>
+        <view class="taninfo">
+          房间：{{item.house.quyuCName}}{{item.house.louNo}}号楼-{{item.house.men}}单元-{{item.house.fangNo}}室{{item.house.fangjianName?"-":''}}{{item.house.fangjianName?item.house.fangjianName:''}}
         </view>
-    </view>
-    <view class="tabItem">
-        <view class="tabItemHead">
-          <view>
-            <view>预定中</view>
-            <view>刘洋  1321111111</view>
-          </view>
-            <image src="../../static/phone.png"></image>
+        <view class="taninfo">付款方式：{{item.houseShoudingPayMethod}}</view>
+        <view class="taninfo">失效时间：{{item.endtime}}</view>
+        <view class="tabBtnBox" wx:if="{{item.isUnsubscribe != 1&&item.isSign != 1&&item.isYuding==1}}">
+          <view bindtap="sign" data-item="{{item}}">签约</view>
+          <view bindtap="cancel" data-item="{{item}}">取消预定</view>
         </view>
-        <view class="taninfo">预定时间：2021.04.12 00:00</view>
-        <view class="taninfo">房间：联发·尔寓19号楼-1单元-4026室</view>
-        <view class="taninfo">付款方式：微信</view>
-        <view class="taninfo">失效时间：2021-04-22 10：21</view>
-        <view class="tabBtnBox" style=" justify-content: center;">
-            <view  bindtap="showPopup">定金激活</view>
+        <view class="tabBtnBox" style=" justify-content: center;"
+          wx:if="{{item.earnestCanActive != 0 && item.isUnsubscribe != 1&&item.isSign != 1 && item.isYuding==2}}">
+          <view bindtap="showPopup" data-id="{{item.id}}">定金激活</view>
         </view>
+      </view>
     </view>
 
+    <view class="noData" wx:else>暂无数据！</view>
   </view>
-
 
 </view>
 
 
 
 
-<van-popup show="{{ show }}"  bind:close="onClose">
+<van-popup show="{{ show }}" bind:close="onClose">
   <view class="pop">
     <view>定金激活</view>
-    <image src="../../static/close.png"></image>
-    <view bindtap="showPopupshowPick"> <view>请选择房间号</view> <image src="../../static/select.png"></image> </view>
-    <view>保存</view>
+    <image bindtap="onClose" src="../../static/close.png"></image>
+    <view bindtap="deposit">
+      <view style="color:{{houseInfo?'#000':''}}">{{houseInfo?houseInfo.fangjianName:'请选择房间号'}} </view>
+      <image src="../../static/select.png"></image>
+    </view>
+    <view bindtap="save">保存</view>
   </view>
 </van-popup>
 
-<van-popup
-  show="{{ showPick }}"
-  position="bottom"
-  custom-style="height: 500rpx"
-  bind:close="onCloseshowPick"
-><van-picker columns="{{ columns }}"  default-index="{{ 4 }}" show-toolbar='true' bind:cancel="onCloseshowPick"
-  bind:confirm="onChange" /></van-popup>
-<tabbar tabbar="{{ tabbar }}"></tabbar>
+<!-- <tabbar tabbar="{{ tabbar }}"></tabbar> -->
+
+<van-dialog id="van-dialog" />
+
+
+<van-popup show="{{ showMode }}" position="bottom" custom-style="height: 500rpx;" bind:close="onCloseMode">
+  <view class="pickers">
+    <van-picker show-toolbar confirm-button-text="确定" cancel-button-text="取消" bind:cancel="onCloseMode"
+      bind:confirm="onConfirmMode" columns="{{ columnsMode }}" />
+  </view>
+</van-popup>
+
+
+<van-popup show="{{ showSquare }}" position="bottom" custom-style="height: 500rpx;" bind:close="onCloseSquare">
+  <view class="pickers">
+    <van-picker show-toolbar confirm-button-text="确定" cancel-button-text="取消" bind:cancel="onCloseSquare"
+      bind:change="onChangeSquare" bind:confirm="onConfirmSquare" columns="{{ columnsSquare }}" />
+  </view>
+</van-popup>

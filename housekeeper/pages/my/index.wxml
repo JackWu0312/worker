@@ -27,7 +27,7 @@
 
 </view>
 <view class="infoBarBox">
-  <view class="infoBar">
+  <!-- <view class="infoBar">
     <image src="../../static/clock.png"></image>
     <view>考勤打卡</view>
   </view>
@@ -48,10 +48,10 @@
   <view class="infoBar">
     <image src="../../static/feedback.png"></image>
     <view>问题反馈</view>
-  </view>
-  <view class="infoBar">
+  </view> -->
+  <view class="infoBar" bindtap="layout">
     <image src="../../static/setup.png"></image>
-    <view>设置</view>
+    <view>退出登陆</view>
   </view>
 </view>
-<tabbar tabbar="{{ tabbar }}"></tabbar>
+<!-- <tabbar tabbar="{{ tabbar }}"></tabbar> -->

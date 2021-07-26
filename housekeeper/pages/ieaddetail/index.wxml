@@ -1,0 +1,63 @@
+<view class="revenue">
+
+  <head headTxet="添加收支"></head>
+  <view class="box">
+    <view class="item">
+      <view><text>收支类型</text><text>*</text></view>
+      <view class="sex">
+        <view class="{{indentType==1?'active':''}}" bindtap="rax" data-rax="1">收</view>
+        <view class="{{indentType==2?'active':''}}" bindtap="rax" data-rax="2">支</view>
+      </view>
+    </view>
+    <view class="item">
+      <view><text>费用类型</text><text>*</text></view>
+      <view class="muban" bindtap="onClose">
+        <view style="background-color:{{type?'#000':''}}">{{type?type:'请选择'}}</view>
+        <image src="../../static/right.png"></image>
+      </view>
+    </view>
+    <view class="item">
+      <view><text>金额</text><text>*</text></view>
+      <view><input type="number" placeholder="请填写" bindinput='bindMoney' value="{{ money }}"  placeholder-class="place" /><text>元</text></view>
+    </view>
+    <view class="item">
+      <view><text>收款日期</text><text>*</text></view>
+      <view class="time" bindtap="onDisplayTime">
+        <view style="color:{{timenew?'#000':''}}">{{timenew?timenew:'请选择'}}</view>
+        <!-- <text>-</text>
+        <view>请选择</view> --> 
+      </view>
+    </view>
+    <view class="item">
+      <view><text>费用周期</text><text>*</text></view>
+      <view class="time" bindtap="onDisplay">
+        <view style="color:{{time?'#000':''}}">{{time?time:'请选择'}}</view>
+        <!-- <text>-</text>
+        <view>请选择</view> --> 
+      </view>
+    </view>
+    <view class="items">
+      <view><text>备注</text></view>
+      <textarea placeholder="请输入描述"  bindinput='bindRemark' value="{{ desc }}" placeholder-class="place"></textarea>
+    </view>
+
+  </view>
+  <view class="btn" bindtap="sure">
+    <view>保存</view> 
+  </view>
+</view>
+
+<van-popup show="{{ show }}" position="bottom" custom-style="height: 500rpx;" bind:close="onClose">
+  <view class="pickers">
+    <van-picker show-toolbar confirm-button-text="确定" cancel-button-text="取消" bind:cancel="onClose"
+      bind:change="onChange" bind:confirm="onConfirm" columns="{{ columns }}" />
+  </view>
+</van-popup>
+
+
+<van-calendar show="{{ showdate }}" bind:close="onClosedate" min-date="{{ minDate }}" max-date="{{ maxDate }}"
+  bind:confirm="onConfirmdate"  type="range" default-date="{{[defaultDate,defaultDate]}}" />
+
+
+<van-calendar show="{{ showtime }}" bind:close="onClosedateTime" min-date="{{ minDate }}" max-date="{{ maxDate }}"
+  bind:confirm="onConfirmdateTime"  default-date="{{defaultDate}}" />

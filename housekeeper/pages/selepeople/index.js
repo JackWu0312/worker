@@ -27,6 +27,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      type:options.type
+    })
     this.getlist()
   },
   getlist(){
@@ -79,12 +82,34 @@ Page({
   onPullDownRefresh: function () {
 
   },
+  all(){
+    var pages = getCurrentPages();
+    var prevPage = pages[pages.length - 2];  //上一个页面
+    prevPage.setData({
+      pageNo: 1,
+      list: [],
+      backInfo: null
+    },()=>{
+      prevPage.getList()
+      wx.navigateBack({
+        delta: 1 // 返回上一级页面。
+      })
+    })
+   
+  },
   backInfo(e){
     var pages = getCurrentPages();
     var prevPage = pages[pages.length - 2];  //上一个页面
     prevPage.setData({
-      backInfo: { id: e.currentTarget.dataset.id, nickName: e.currentTarget.dataset.nickname ,dptm:e.currentTarget.dataset.name}
+      backInfo: { id: e.currentTarget.dataset.id, nickName: e.currentTarget.dataset.nickname ,dptm:e.currentTarget.dataset.name,dptmId:e.currentTarget.dataset.dptmid}
     },()=>{
+      if(this.data.type==1){
+        prevPage.setData({
+          pageNo: 1,
+          list: []
+        })
+        prevPage.getList()
+      }
       wx.navigateBack({
         delta: 1 // 返回上一级页面。
       })
@@ -114,4 +139,4 @@ Page({
   onShareAppMessage: function () {
 
   }
-})
+}) 

@@ -4,6 +4,7 @@
   "usingComponents": {
     "tabbar": "/components/tabbarComponent/tabbar",
     "van-popup": "@vant/weapp/popup/index",
-    "van-picker": "@vant/weapp/picker/index"
+    "van-picker": "@vant/weapp/picker/index",
+    "van-dialog": "@vant/weapp/dialog/index"
   }
 }

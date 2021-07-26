@@ -20,7 +20,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    app.editTabbar();
+    // app.editTabbar();
     this.getCount();
     this.getCountRenting();
     this.getCountManagement();
@@ -114,7 +114,46 @@ Page({
   onHide: function () {
 
   },
-
+  clean(){
+    wx.navigateTo({
+      url: `/pages/clean/index`
+    });
+  },
+  repair(){
+    wx.navigateTo({
+      url: `/pages/repair/index`
+    });
+  },
+  complaint(){
+    wx.navigateTo({
+      url: `/pages/complaint/index`
+    });
+  },
+  myreserve(){
+    wx.navigateTo({
+      url: `/pages/myreserve/index`
+    });
+  },
+  mycontract(){
+    wx.navigateTo({
+      url: `/pages/mycontract/index`
+    });
+  },
+  electronics(){
+    wx.navigateTo({
+      url: `/pages/electronics/index`
+    });
+  },
+  tenant(){
+    wx.navigateTo({
+      url: `/pages/tenant/index`
+    });
+  },
+  enterprise(){
+    wx.navigateTo({
+      url: `/pages/enterprise/index`
+    });
+  },
   /**
    * 生命周期函数--监听页面卸载
    */

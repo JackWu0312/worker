@@ -1,0 +1,314 @@
+<view class="work">
+
+  <head headTxet="工单详情"></head>
+  <view class="box">
+    <view class="tit">
+      <view class="titText">申请：{{val.ct}}</view>
+      <view class="point">
+        <view></view>
+      </view>
+    </view>
+    <view class="baxItem">
+      <view class="tabItem">
+        <view class="tabItemHead">
+          <view>
+            <view style=" background: #24b0fc;" wx:if="{{val.status == 1}}">待处理</view>
+            <view style=" background: #f5b000;" wx:if="{{val.status == 2}}">派单中</view>
+            <view style=" background: #fc3c3c;" wx:if="{{val.status == 3}}">待验收</view>
+            <view style=" background: #ccc;" wx:if="{{val.status == 4}}">已取消</view>
+            <view style=" background: #01be6a;" wx:if="{{val.status == 5}}">已验收</view>
+            <view>{{val.customer}} {{val.customerCalls}}</view>
+          </view>
+          <view class="btn">{{val.chengdanType == 1?"公司":val.chengdanType == 2?'租户':val.chengdanType == 3?'业主':''}}
+          </view>
+        </view>
+        <view class="taninfo">
+          地址：地址：{{val.house.quyuCName}}{{val.house.louNo}}号楼{{val.house.men}}单元{{val.house.fangNo}}室{{val.house.fangjianName}}
+        </view>
+        <view class="taninfo">预约上门时间：{{val.expectCompletionTime}}</view>
+        <view class="taninfo" style="margin-bottom:20rpx">
+        <!-- <text  style=" background-color: {{item.degree==1?'#ff0000':'#24b0fc'}}">{{val.degree==1?'紧急':'一般'}}</text> -->
+          保洁原因：{{val.repairServiceContent}}</view>
+        <van-uploader file-list="{{ fileList }}" show-upload="{{false}}" deletable="{{false}}"></van-uploader>
+      </view>
+    </view>
+
+
+    <view class="tit" wx:if="{{val.status > 1&&val.status!=4}}">
+      <view class="titText">派单：{{val.baojieTime?val.baojieTime:'暂无'}}</view>
+      <view class="point">
+        <view></view>
+      </view>
+    </view>
+    <view class="baxItem" wx:if="{{val.status > 1&&val.status!=4}}">
+      <view class="tabItem">
+        <view class="tabItemHead">
+          <view>
+            <view>
+              <image src="../../static/people.pic"></image>
+            </view>
+            <view wx:if="{{val.processType==1}}"> {{val.workerId.customer}} {{val.workerId.customerCalls}} </view>
+            <view wx:if="{{val.processType==2}}"> {{val.personsInvolvedId.nickName}} {{val.personsInvolvedId.phone}}
+            </view>
+          </view>
+        </view>
+        <view class="taninfo">上门时间：{{val.baojieTime?val.baojieTime:'暂无'}}</view>
+        <view class="taninfo">承担方：{{val.chengdanType == 1?"公司":val.chengdanType == 2?'租户':val.chengdanType ==
+          3?'业主':''}} {{val.totalPrice}}元</view>
+        <view class="taninfo" wx:if="{{val.processType==1}}"> {{val.repairContentJjr}} </view>
+        <view class="taninfo" wx:if="{{val.processType==2}}"> {{val.repairDetail}} </view>
+      </view>
+    </view>
+
+
+    <view class="tit" wx:if="{{val.status > 2&&val.status!=4}}">
+      <view class="titText">完工：{{val.wancheng?val.wancheng:'暂无'}}</view>
+      <view class="point">
+        <view></view>
+      </view>
+    </view>
+    <view class="baxItem" wx:if="{{val.status > 2&&val.status!=4}}">
+      <view class="tabItem">
+        <view class="tabItemHead">
+          <view>
+            <view>
+              <image src="../../static/people.pic"></image>
+            </view>
+            <view>{{val.workerId.customer || val.personsInvolvedId.nickName}} {{val.workerId.customerCalls ||
+              val.personsInvolvedId.phone}}</view>
+          </view>
+        </view>
+        <view class="taninfo">上门时间：{{val.baojieTime?val.baojieTime:'暂无'}}</view>
+        <view class="taninfo">{{val.repairDetail}}</view>
+      </view>
+    </view>
+
+
+
+    <view class="tit" wx:if="{{val.status > 3&&val.status!=4}}">
+      <view class="titText">验收：{{val.checkDate?val.checkDate:'暂无'}}</view>
+      <view class="point">
+        <view></view>
+      </view>
+    </view>
+    <view class="baxItem" wx:if="{{val.status > 3&&val.status!=4}}">
+      <view class="tabItem">
+        <view class="tabItemHead">
+          <view>
+            <view>
+              <image src="../../static/people.pic"></image>
+            </view>
+            <view>{{val.checkUser.nickName}} {{val.checkUser.phone}}</view>
+          </view>
+        </view>
+        <view class="taninfo">承担方：{{val.chengdanType == 1?"公司":val.chengdanType == 2?'租户':val.chengdanType ==
+          3?'业主':''}} {{val.totalPrice}}元</view>
+        <view class="taninfo">完成时间：{{val.checkDate}}</view>
+        <view class="taninfo">{{val.checkRemark}}</view>
+      </view>
+    </view>
+
+  </view>
+  <view class="button" wx:if="{{val.status == 1}}">
+    <view bindtap="onClose">派单</view>
+    <view bindtap="cancel">取消订单</view>
+  </view>
+  <view class="button" wx:if="{{val.status == 2}}">
+    <view bindtap="cancel">取消订单</view>
+    <view bindtap="onClose">改派</view>
+    <view bindtap="onClosecomplete">完成</view>
+  </view>
+  <view class="button" wx:if="{{val.status == 3}}">
+    <view style="width: 680rpx!important;" bindtap="test">验收</view>
+  </view>
+</view>
+
+
+
+
+<van-dialog id="van-dialog" />
+<van-popup show="{{ show }}" position="bottom" closeable
+  custom-style="height: {{active==1?'800rpx':active==2?'860rpx':'300rpx'}}" bind:close="onClose">
+  <view>
+    <view class="workOdd">
+      <view>
+        <view class="{{active==1?'active':''}}" bindtap="select" data-type="1">派单</view>
+        <view class="{{active==2?'active':''}}" bindtap="select" data-type="2">自己处理</view>
+        <view class="{{active==3?'active':''}}" bindtap="select" data-type="3">指派</view>
+      </view>
+      <!-- <van-radio wx:if="{{active==1}}" checked-color="#5BDD66"> 是否紧急</van-radio> -->
+    </view>
+ 
+    <view class="itembox" wx:if="{{active==1}}">
+      <view class="item">
+        <view><text>预约时间</text><text>*</text></view>
+        <picker mode="multiSelector" value="{{dateTime}}" bindchange="changeDateTime" range="{{dateTimeArray}}">
+          <view class="tui-picker-detail" id="eventTime">
+            {{showDate?showDate:'请选择'}}
+          </view>
+        </picker>
+      </view>
+      <view class="item">
+        <view><text>工人姓名</text><text>*</text></view>
+        <view class="muban" bindtap="onClosecost">
+          <view style="background-color:{{columnsCostText?'#000':''}}">{{columnsCostText?columnsCostText:'请选择'}}</view>
+          <image src="../../static/right.png"></image>
+        </view>
+      </view>
+      <view class="item">
+        <view><text>承担方</text><text>*</text></view>
+        <view class="muban" >
+          <view class="workOdd" style="padding:0">
+            <view style="color:#5BDD66">
+              <view class="{{chengdanType==1?'active':''}}" bindtap="selectchengdanType" data-type="1">公司</view>
+              <view class="{{chengdanType==2?'active':''}}" bindtap="selectchengdanType" data-type="2">租户</view>
+              <view class="{{chengdanType==3?'active':''}}" bindtap="selectchengdanType" data-type="3">业主</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="item">
+        <view><text>预计费用</text><text>*</text></view>
+        <view><input type="text" placeholder="请填写" bindinput='bindMoney' value="{{ totalPrice }}"
+            placeholder-class="place" /><text>元</text></view>
+      </view>
+      <view class="items">
+        <view><text>备注</text></view>
+        <textarea placeholder="请填写" bindinput='bindRemark' value="{{repairContentJjr}}" placeholder-class="place"></textarea>
+      </view>
+    </view>
+
+
+
+
+    <view class="itembox" wx:if="{{active==2}}">
+      <view class="item">
+        <view><text>承担方</text><text>*</text></view>
+        <view class="muban" >
+          <view class="workOdd" style="padding:0">
+            <view style="color:#5BDD66">
+              <view class="{{chengdanType==1?'active':''}}" bindtap="selectchengdanType" data-type="1">公司</view>
+              <view class="{{chengdanType==2?'active':''}}" bindtap="selectchengdanType" data-type="2">租户</view>
+              <view class="{{chengdanType==3?'active':''}}" bindtap="selectchengdanType" data-type="3">业主</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="item">
+        <view><text>承担金额</text><text>*</text></view>
+        <view><input type="text" placeholder="请填写" bindinput='bindMoney' value="{{ totalPrice }}"
+            placeholder-class="place" /><text>元</text></view>
+      </view>
+
+      <view class="items">
+        <view><text>处理结果</text></view>
+        <textarea placeholder="请填写" bindinput='bindrepairDetail' value="{{repairDetail}}" placeholder-class="place"></textarea>
+      </view>
+      <view class="items">
+        <view style="margin-bottom:10rpx"><text>拍照存留</text></view>
+        <van-uploader file-list="{{ fileListall }}" bind:delete="deleteImg" bind:after-read="afterRead" data-type="1"/>
+      </view>
+    </view>
+
+
+    <view class="itembox" wx:if="{{active==3}}">
+      <view class="item">
+        <view><text>选择人员</text><text>*</text></view>
+        <view class="muban" bindtap="selepeople">
+          <view style="color:{{backInfo.nickName?'#000':''}}">{{backInfo.nickName?backInfo.nickName:'请选择'}}</view>
+          <image src="../../static/right.png"></image>
+        </view>
+      </view>
+    </view>
+    <view class="save">
+      <view bindtap="save">保存</view>
+    </view>
+  </view>
+</van-popup>
+
+
+<van-popup show="{{ showcomplete }}" position="bottom" custom-style="height: 860rpx" bind:close="onClosecomplete">
+  <view>
+    <view class="itembox">
+      <view class="item">
+        <view><text>承担方</text><text>*</text></view>
+        <view class="muban">
+          <view class="workOdd" style="padding:0">
+            <view style="color:#5BDD66">
+              <view class="{{chengdanType==1?'active':''}}" bindtap="selectchengdanType" data-type="1">公司</view>
+              <view class="{{chengdanType==2?'active':''}}" bindtap="selectchengdanType" data-type="2">租户</view>
+              <view class="{{chengdanType==3?'active':''}}" bindtap="selectchengdanType" data-type="3">业主</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="item">
+        <view><text>完成时间</text><text>*</text></view>
+        <picker mode="multiSelector" value="{{dateTime}}" bindchange="changeDateTime" range="{{dateTimeArray}}">
+          <view class="tui-picker-detail" id="eventTime">
+            {{showDate?showDate:'请选择'}}
+          </view>
+        </picker> 
+      </view>
+      <view class="item">
+        <view><text>最终金额</text><text>*</text></view>
+        <view><input type="text" placeholder="请填写" bindinput='bindMoney' value="{{ totalPrice }}"
+            placeholder-class="place" /><text>元</text></view>
+      </view>
+
+      <view class="items">
+        <view><text>处理结果</text></view>
+        <textarea placeholder="请填写" bindinput='bindrepairDetail' value="{{repairDetail}}" placeholder-class="place"></textarea>
+      </view>
+      <view class="items">
+        <view style="margin-bottom:10rpx"><text>拍照存留</text></view>
+        <van-uploader file-list="{{ fileListwanc }}" bind:delete="deleteImg" bind:after-read="afterRead"  data-type="2"/>
+      </view>
+    </view>
+
+    <view class="save">
+      <view bindtap="sure">保存</view>
+    </view>
+  </view>
+</van-popup>
+
+
+<van-popup show="{{ showtest }}" position="bottom" custom-style="height: 520rpx" bind:close="test">
+  <view>
+    <view class="itembox">
+      <view class="item">
+        <view><text>承担方</text><text>*</text></view>
+        <view class="muban" >
+          <view class="workOdd" style="padding:0">
+            <view style="color:#5BDD66">
+              <view class="{{chengdanType==1?'active':''}}" bindtap="selectchengdanType" data-type="1">公司</view>
+              <view class="{{chengdanType==2?'active':''}}" bindtap="selectchengdanType" data-type="2">租户</view>
+              <view class="{{chengdanType==3?'active':''}}" bindtap="selectchengdanType" data-type="3">业主</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="item">
+        <view><text>最终金额</text><text>*</text></view>
+        <view><input type="text" placeholder="请填写" bindinput='bindMoney' value="{{ totalPrice }}"
+            placeholder-class="place" /><text>元</text></view>
+      </view>
+      <view class="items">
+        <view><text>完成备注</text></view>
+        <textarea placeholder="请填写" bindinput='bindcheckRemark'  value="{{checkRemark}}" placeholder-class="place"></textarea>
+      </view>
+    </view>
+    <view class="save">
+      <view bindtap="saveyan">保存</view>
+    </view>
+  </view>
+</van-popup>
+
+
+
+<van-popup show="{{ showcost }}" position="bottom" custom-style="height: 500rpx;" bind:close="onClosecost">
+  <view class="pickers">
+    <van-picker show-toolbar confirm-button-text="确定" cancel-button-text="取消" bind:cancel="onClosecost"
+      bind:confirm="onConfirmcost" columns="{{ columnsCost }}" />
+  </view>
+</van-popup>
